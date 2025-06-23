@@ -2,6 +2,7 @@
 
 function boilerplate_load_assets() {
   wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), '1.0', true);
+  wp_enqueue_script('animations', get_theme_file_uri('/build/animations.js'), array(), '1.0', true);
   wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'));
   wp_enqueue_style('google-fonts-poppins', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap', array(), null);
 }

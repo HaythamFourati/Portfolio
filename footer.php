@@ -4,25 +4,26 @@
       <div>
         <h3 class="text-xl font-bold mb-4">Haytham Fourati</h3>
         <p class="text-gray-400 mb-4">WordPress Developer & SEO Specialist based in Sfax, Tunisia. Creating custom websites with a focus on performance and user experience.</p>
-        <p class="text-gray-400"><a href="mailto:Fourattvisuals@gmail.com" class="hover:text-blue-400 transition duration-300">Fourattvisuals@gmail.com</a></p>
-        <p class="text-gray-400"><a href="tel:+21629708027" class="hover:text-blue-400 transition duration-300">+216 29708027</a></p>
+        <p class="text-gray-400"><a href="mailto:fourativisuals@gmail.com" class="hover:text-blue-400 transition duration-300">fourativisuals@gmail.com</a></p>
       </div>
       <div>
         <h3 class="text-xl font-bold mb-4">Quick Links</h3>
         <ul class="space-y-2">
-          <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Home</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Skills</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Experience</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Projects</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Contact</a></li>
+          <li><a href="<?php echo get_home_url(); ?>" class="text-gray-400 hover:text-blue-400 transition duration-300">Home</a></li>
+          <li><a href="<?php echo get_home_url(); ?>#skills" class="text-gray-400 hover:text-blue-400 transition duration-300">Skills</a></li>
+          <li><a href="<?php echo get_home_url(); ?>#projects" class="text-gray-400 hover:text-blue-400 transition duration-300">Projects</a></li>
+          <li><a href="<?php echo get_home_url(); ?>#contact" class="text-gray-400 hover:text-blue-400 transition duration-300">Contact</a></li>
         </ul>
       </div>
       <div>
         <h3 class="text-xl font-bold mb-4">Recent Projects</h3>
         <ul class="space-y-2">
           <li><a href="https://precisionaestheticsmd.com" class="text-gray-400 hover:text-blue-400 transition duration-300">Precision Aesthetics MD</a></li>
-          <li><a href="https://kidzcreations.com" class="text-gray-400 hover:text-blue-400 transition duration-300">Kidz Creations</a></li>
+          <li><a href="https://kidzzkreations.com/" class="text-gray-400 hover:text-blue-400 transition duration-300">Kidzz Kreations</a></li>
           <li><a href="https://localvocalmarketing.com" class="text-gray-400 hover:text-blue-400 transition duration-300">Local Vocal Marketing</a></li>
+          <li><a href="https://caregivingangelsofmd.com/" class="text-gray-400 hover:text-blue-400 transition duration-300">Care Giving Angels of MD</a></li>
+          <li><a href="https://adhdtestcalifornia.com/" class="text-gray-400 hover:text-blue-400 transition duration-300">ADHD Telehealth Testing</a></li>
+          <li><a href="https://www.cullenburke.com/" class="text-gray-400 hover:text-blue-400 transition duration-300">Cullen Burke</a></li>
         </ul>
       </div>
     </div>
@@ -60,6 +61,9 @@
     </div>
   </div>
 </footer>
+
+    </div> <!-- /#smooth-content -->
+  </div> <!-- /#smooth-wrapper -->
 
 <?php wp_footer(); ?>
 

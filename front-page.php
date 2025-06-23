@@ -7,27 +7,33 @@
 
 get_header(); ?>
 
-<div class="bg-[#0A192F] text-gray-300 relative"> <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_rgba(30,64,175,0.15)_0%,_transparent_60%)] pointer-events-none"></div>
+<div class="bg-gradient-to-br from-[#0A192F] to-[#112240] text-gray-300 relative"> <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_rgba(30,64,175,0.15)_0%,_transparent_60%)] pointer-events-none"></div>
   <!-- Hero Section -->
 <section id="hero" class="max-w-7xl mx-auto px-4 py-12 md:py-16 flex items-center">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div class="text-left">
-            <p class="inline-block bg-gray-800/50 border border-gray-700 rounded-md px-3 py-1 text-sm font-mono text-white mb-4 tracking-widest">AVAILABLE FOR FREELANCE WORK</p>
+            <p class="inline-flex items-center bg-gray-800/50 border border-gray-700 rounded-md px-3 py-1 text-sm font-mono text-white mb-4 tracking-widest">
+              <span class="relative flex h-2.5 w-2.5 mr-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              AVAILABLE FOR FREELANCE WORK
+            </p>
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white font-poppins">
                 Hi, I'm <span class="text-blue-400">Haytham Fourati.</span>
             </h1>
-            <h2 class="text-2xl sm:text-2xl md:text-4xl font-semibold text-gray-400 mt-2">
+            <h2 class="text-2xl sm:text-2xl md:text-4xl font-poppins text-gray-400 mt-2">
                 WordPress & front-end developer.
             </h2>
             <p class="mt-6 text-lg text-gray-400 max-w-xl">
-                I craft responsive web applications where technologies meet creativity. Building exceptional digital experiences with modern full stack frameworks.
+            I design and develop custom WordPress themes with a strong focus on front-end performance, accessibility, and user experience. Leveraging modern tools and AI enhancements, I create fast, responsive, and visually striking websites that elevate brands online.
             </p>
             <div class="flex flex-wrap gap-4 mt-8">
-                <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-md transition duration-300">
+                <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#0A192F]">
                     View My Work
                 </a>
-                <a href="#contact" class="border-2 border-blue-600 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-md transition duration-300">
-                    Contact Me
+                <a href="#contact" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-[#0A192F]">
+                    Get In Touch
                 </a>
             </div>
             <div class="mt-10">
@@ -66,54 +72,104 @@ get_header(); ?>
             </div>
         </div>
     </div>
-</section>
+  </section>
+
+  <!-- Recent Projects -->
+  <section id="projects" class="bg-[#0A192F] py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-white mb-12">Recent Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+          <img src="<?php echo home_url('/wp-content/uploads/2025/06/Precision-Aesthetics-NYC.png'); ?>" alt="Precision Aesthetics MD" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Precision Aesthetics MD</h3>
+            <p class="text-gray-400 mb-4">A sleek, professional website for a medical spa, focusing on clean design and user experience.</p>
+            <a href="https://precisionaestheticsmd.com" target="_blank" class="text-blue-400 hover:text-blue-500 font-semibold">View Project &rarr;</a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+          <img src="<?php echo home_url('/wp-content/uploads/2025/06/Kidzz-Kreations.png'); ?>" alt="Kidzz Kreations" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Kidzz Kreations</h3>
+            <p class="text-gray-400 mb-4">Turning your child’s dream party into reality with memorable entertainment services. Proudly serving the Tri-State area (CT, NJ, NY).</p>
+            <a href="https://kidzzkreations.com/" target="_blank" class="text-blue-400 hover:text-blue-500 font-semibold">View Project &rarr;</a>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+          <img src="<?php echo home_url('/wp-content/uploads/2025/06/Local-Vocal-Marketing-Maryland-web-design.png'); ?>" alt="Local Vocal Marketing" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Local Vocal Marketing</h3>
+            <p class="text-gray-400 mb-4">A corporate website for a marketing agency, showcasing their services and portfolio.</p>
+            <a href="https://localvocalmarketing.com" target="_blank" class="text-blue-400 hover:text-blue-500 font-semibold">View Project &rarr;</a>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+          <img src="http://haythamfourati.local/wp-content/uploads/2025/06/Caregiving-Angels-of-Maryland.png" alt="Care Giving Angels of MD" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Care Giving Angels of MD</h3>
+            <p class="text-gray-400 mb-4">A compassionate and professional website for a home care agency, designed to build trust and provide clear information for families.</p>
+            <a href="https://caregivingangelsofmd.com/" target="_blank" class="text-blue-400 hover:text-blue-500 font-semibold">View Project &rarr;</a>
+          </div>
+        </div>
+        <!-- Project 5 -->
+        <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+          <img src="http://haythamfourati.local/wp-content/uploads/2025/06/ADHD-Telehealth-Testing-Across-California.png" alt="ADHD Telehealth Testing" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">ADHD Telehealth Testing</h3>
+            <p class="text-gray-400 mb-4">A user-friendly platform for accessible ADHD testing in California, ensuring a smooth and confidential patient experience.</p>
+            <a href="https://adhdtestcalifornia.com/" target="_blank" class="text-blue-400 hover:text-blue-500 font-semibold">View Project &rarr;</a>
+          </div>
+        </div>
+        <!-- Project 6 -->
+        <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+          <img src="http://haythamfourati.local/wp-content/uploads/2025/06/Ocean-City-Criminal-Defense-Lawyer-Cullen-Burke.png" alt="Cullen Burke" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Cullen Burke</h3>
+            <p class="text-gray-400 mb-4">A strong and authoritative website for a criminal defense lawyer, built to convey expertise and provide critical resources.</p>
+            <a href="https://www.cullenburke.com/" target="_blank" class="text-blue-400 hover:text-blue-500 font-semibold">View Project &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#0A192F]">
+          View All Projects
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Technical Skills Section -->
-  <section class="bg-[#0A192F] py-16">
-    <div class="max-w-5xl mx-auto px-4">
+  <section id="skills" class="bg-[#0A192F] py-16">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12 text-white">Technical Skills</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4 text-blue-400">WordPress Development</h3>
-          <p class="text-gray-400 mb-4">Custom themes, Elementor, UX Builder, Flatsome Theme</p>
-          <div class="w-full bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
-          </div>
+          <p class="text-gray-400 mb-4">Custom themes, Elementor, UX Builder, Github</p>
         </div>
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4 text-blue-400">Front-End Technologies</h3>
-          <p class="text-gray-400 mb-4">HTML, CSS, JavaScript</p>
-          <div class="w-full bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
-          </div>
+          <p class="text-gray-400 mb-4">HTML, CSS, JavaScript, Tailwind CSS, React.js, GSAP</p>
         </div>
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4 text-blue-400">SEO & Performance</h3>
-          <p class="text-gray-400 mb-4">Yoast SEO, Rank Math, Page Speed Optimization</p>
-          <div class="w-full bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
-          </div>
+          <p class="text-gray-400 mb-4">Yoast SEO, Rank Math, GTmetrix, PageSpeed Insights</p>
         </div>
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold mb-4 text-blue-400">Website Maintenance & Security</h3>
-          <p class="text-gray-400 mb-4">Backups, Updates, Troubleshooting</p>
-          <div class="w-full bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
-          </div>
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Website Security</h3>
+          <p class="text-gray-400 mb-4">Wordfence, Sucuri, iThemes Security</p>
         </div>
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-4 text-blue-400">Hosting Management</h3>
-          <p class="text-gray-400 mb-4">SiteGround, InMotion Hosting, Bluehost</p>
-          <div class="w-full bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
-          </div>
+          <p class="text-gray-400 mb-4">SiteGround, InMotion Hosting, Bluehost, Hostinger</p>
         </div>
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold mb-4 text-blue-400">Design Tools</h3>
-          <p class="text-gray-400 mb-4">Adobe XD</p>
-          <div class="w-full bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
-          </div>
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">AI & Design Tools</h3>
+          <p class="text-gray-400 mb-4">Adobe XD, Figma, Canva, ChatGPT, DALL-E, Midjourney, Windsurf, Make.com (Automation)</p>
         </div>
       </div>
     </div>
@@ -121,12 +177,12 @@ get_header(); ?>
 
   <!-- Experience Section -->
   <section class="bg-[#0A192F] py-16">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12 text-white">Work Experience</h2>
       
-      <div class="relative border-l-2 border-blue-500 pl-8 ml-4 mb-12">
-        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px]"></div>
-        <div class="mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Experience 1: Local Vocal Marketing -->
+        <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg h-full border-t-4 border-t-blue-500">
           <h3 class="text-xl font-semibold text-white">WordPress Developer | Local Vocal Marketing</h3>
           <p class="text-gray-400 mb-2">Jan 2019 - Present | Baltimore County, Maryland, United States</p>
           <ul class="list-disc pl-5 text-gray-400 space-y-2 mt-4">
@@ -137,11 +193,9 @@ get_header(); ?>
             <li>Collaborated with clients to deliver customized web solutions.</li>
           </ul>
         </div>
-      </div>
 
-      <div class="relative border-l-2 border-blue-500 pl-8 ml-4 mb-12">
-        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px]"></div>
-        <div class="mb-8">
+        <!-- Experience 2: Fiverr -->
+        <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg h-full border-t-4 border-t-blue-500">
           <h3 class="text-xl font-semibold text-white">WordPress Expert | Fiverr</h3>
           <p class="text-gray-400 mb-2">Feb 2019 - May 2022</p>
           <ul class="list-disc pl-5 text-gray-400 space-y-2 mt-4">
@@ -151,11 +205,9 @@ get_header(); ?>
             <li>Communicated effectively with international clients to meet project requirements.</li>
           </ul>
         </div>
-      </div>
 
-      <div class="relative border-l-2 border-blue-500 pl-8 ml-4 mb-12">
-        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px]"></div>
-        <div class="mb-8">
+        <!-- Experience 3: POLYSERVICE -->
+        <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg h-full border-t-4 border-t-blue-500">
           <h3 class="text-xl font-semibold text-white">WordPress Developer | POLYSERVICE</h3>
           <p class="text-gray-400 mb-2">Mar 2018 - Nov 2019 | Tunis, Tunisia</p>
           <ul class="list-disc pl-5 text-gray-400 space-y-2 mt-4">
@@ -165,11 +217,9 @@ get_header(); ?>
             <li>Provided continuous updates and improvements for client sites.</li>
           </ul>
         </div>
-      </div>
 
-      <div class="relative border-l-2 border-blue-500 pl-8 ml-4">
-        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px]"></div>
-        <div>
+        <!-- Experience 4: Online Review Machine -->
+        <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg h-full border-t-4 border-t-blue-500">
           <h3 class="text-xl font-semibold text-white">Data Entry Operator | Online Review Machine</h3>
           <p class="text-gray-400 mb-2">Mar 2016 - May 2018 | North Carolina, United States</p>
           <ul class="list-disc pl-5 text-gray-400 space-y-2 mt-4">
@@ -181,93 +231,68 @@ get_header(); ?>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section class="bg-[#0A192F] py-16">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-white">Recent Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <a href="https://precisionaestheticsmd.com" target="_blank" class="block group">
-          <div class="bg-gray-900/50 border border-gray-700 rounded-lg overflow-hidden shadow-lg transition duration-300 group-hover:shadow-blue-500/20">
-            <div class="h-48 bg-gray-800 flex items-center justify-center">
-              <span class="text-gray-400">Project Image</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition duration-300">Precision Aesthetics MD</h3>
-              <p class="text-gray-400">A custom WordPress website for a medical aesthetics practice featuring appointment booking, service information, and before/after galleries.</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">WordPress</span>
-                <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">Flatsome</span>
-                <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">SEO</span>
-              </div>
-            </div>
+  <!-- About Me Section -->
+  <section id="about" class="bg-[#0A192F] py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <!-- Left Column: About Me Text -->
+        <div class="md:col-span-2">
+          <h2 class="text-3xl font-bold text-white mb-6">
+            <span class="text-blue-400">🧑‍💻</span> About Me
+          </h2>
+          <div class="text-gray-300 space-y-4 prose prose-invert max-w-none">
+            <p>Hi, I’m Haytham Fourati — a front-end WordPress developer with 5+ years of experience crafting clean, responsive, and performance-driven websites. I specialize in custom WordPress theme development, blending elegant front-end design with functional usability.</p>
+            <p>My work focuses on building fast-loading, SEO-optimized sites that are tailored to each client’s unique vision. Whether I’m coding from scratch or customizing a theme, I aim to deliver a polished user experience backed by thoughtful, scalable code.</p>
+            <p>I also stay ahead of the curve by integrating AI tools and automation into my workflow — from intelligent content creation to smarter client solutions — helping businesses gain a competitive edge online.</p>
+            <p>Originally from Tunisia, I work remotely with clients and agencies around the world. I’m also someone who values clarity, good communication, and long-term partnerships — not just quick fixes.</p>
+            <p>When I’m not coding, you’ll probably find me learning a new tech stack, optimizing a design layout, or quietly enjoying life offline.</p>
           </div>
-        </a>
-        <a href="https://kidzcreations.com" target="_blank" class="block group">
-          <div class="bg-gray-900/50 border border-gray-700 rounded-lg overflow-hidden shadow-lg transition duration-300 group-hover:shadow-blue-500/20">
-            <div class="h-48 bg-gray-800 flex items-center justify-center">
-              <span class="text-gray-400">Project Image</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition duration-300">Kidz Creations</h3>
-              <p class="text-gray-400">An e-commerce website for a children's products store with product catalog, shopping cart, and secure checkout functionality.</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">WordPress</span>
-                <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">WooCommerce</span>
-                <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">Custom Theme</span>
-              </div>
-            </div>
+        </div>
+        <!-- Right Column: Image and Languages -->
+        <div class="md:col-span-1 space-y-8">
+          <div class="flex justify-center">
+              <img src="http://haythamfourati.local/wp-content/uploads/2025/06/profile-picture-number2.jpg" alt="Haytham Fourati" class="rounded-lg shadow-2xl object-cover w-full h-auto max-w-sm">
           </div>
-        </a>
-      </div>
-      <div class="text-center mt-10">
-        <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300">View All Projects</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Languages Section -->
-  <section class="bg-[#0A192F] py-16">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-white">Languages</h2>
-      <div class="bg-gray-900/50 border border-gray-700 p-8 rounded-lg shadow-lg">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="space-y-6">
-            <div>
-              <div class="flex justify-between mb-1">
-                <span class="font-medium text-white">English</span>
-                <span class="text-gray-400">Fluent</span>
+          <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-white mb-6 text-center">Languages</h3>
+              <div class="space-y-5">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">English</span>
+                    <span class="text-gray-400">Fluent</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">Arabic</span>
+                    <span class="text-gray-400">Fluent</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">French</span>
+                    <span class="text-gray-400">Good</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">German</span>
+                    <span class="text-gray-400">Beginner</span>
+                  </div>
+                  <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 25%"></div>
+                  </div>
+                </div>
               </div>
-              <div class="w-full bg-gray-700 rounded-full h-2.5">
-                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1">
-                <span class="font-medium text-white">Arabic</span>
-                <span class="text-gray-400">Fluent</span>
-              </div>
-              <div class="w-full bg-gray-700 rounded-full h-2.5">
-                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1">
-                <span class="font-medium text-white">French</span>
-                <span class="text-gray-400">Good</span>
-              </div>
-              <div class="w-full bg-gray-700 rounded-full h-2.5">
-                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 70%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1">
-                <span class="font-medium text-white">German</span>
-                <span class="text-gray-400">Beginner</span>
-              </div>
-              <div class="w-full bg-gray-700 rounded-full h-2.5">
-                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 30%"></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -276,7 +301,7 @@ get_header(); ?>
 
   <!-- Soft Skills Section -->
   <section class="bg-[#0A192F] py-16">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12 text-white">Soft Skills</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg flex items-start">
@@ -328,14 +353,13 @@ get_header(); ?>
   </section>
 
   <!-- Contact Section -->
-  <section class="bg-blue-600 text-white py-16">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6">Let's Work Together</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">Looking for a WordPress developer to bring your website vision to life? Get in touch today!</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="mailto:Fourattvisuals@gmail.com" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg transition duration-300 font-medium">Email Me</a>
-        <a href="tel:+21629708027" class="bg-transparent hover:bg-blue-700 border-2 border-white px-6 py-3 rounded-lg transition duration-300 font-medium">+216 29708027</a>
-      </div>
+  <section id="contact" class="bg-gradient-to-br from-blue-700 via-blue-800 to-[#0A192F] text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-4">Ready to build something amazing?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto text-gray-300">Let's connect and discuss how I can help you achieve your goals.</p>
+      <a href="mailto:fourativisuals@gmail.com" class="inline-block bg-white text-blue-700 font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:bg-gray-100 hover:scale-105 transform transition duration-300">
+        Collaborate
+      </a>
     </div>
   </section>
 </div>
