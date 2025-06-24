@@ -108,7 +108,7 @@ get_header(); ?>
         </div>
         <!-- Project 4 -->
         <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
-          <img src="http://haythamfourati.local/wp-content/uploads/2025/06/Caregiving-Angels-of-Maryland.png" alt="Care Giving Angels of MD" class="w-full h-48 object-cover">
+                    <img src="<?php echo home_url('/wp-content/uploads/2025/06/Caregiving-Angels-of-Maryland.png'); ?>" alt="Care Giving Angels of MD" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">Care Giving Angels of MD</h3>
             <p class="text-gray-400 mb-4">A compassionate and professional website for a home care agency, designed to build trust and provide clear information for families.</p>
@@ -117,7 +117,7 @@ get_header(); ?>
         </div>
         <!-- Project 5 -->
         <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
-          <img src="http://haythamfourati.local/wp-content/uploads/2025/06/ADHD-Telehealth-Testing-Across-California.png" alt="ADHD Telehealth Testing" class="w-full h-48 object-cover">
+                    <img src="<?php echo home_url('/wp-content/uploads/2025/06/ADHD-Telehealth-Testing-Across-California.png'); ?>" alt="ADHD Telehealth Testing" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">ADHD Telehealth Testing</h3>
             <p class="text-gray-400 mb-4">A user-friendly platform for accessible ADHD testing in California, ensuring a smooth and confidential patient experience.</p>
@@ -126,7 +126,7 @@ get_header(); ?>
         </div>
         <!-- Project 6 -->
         <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
-          <img src="http://haythamfourati.local/wp-content/uploads/2025/06/Ocean-City-Criminal-Defense-Lawyer-Cullen-Burke.png" alt="Cullen Burke" class="w-full h-48 object-cover">
+                    <img src="<?php echo home_url('/wp-content/uploads/2025/06/Ocean-City-Criminal-Defense-Lawyer-Cullen-Burke.png'); ?>" alt="Cullen Burke" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">Cullen Burke</h3>
             <p class="text-gray-400 mb-4">A strong and authoritative website for a criminal defense lawyer, built to convey expertise and provide critical resources.</p>
@@ -251,7 +251,7 @@ get_header(); ?>
         <!-- Right Column: Image and Languages -->
         <div class="md:col-span-1 space-y-8">
           <div class="flex justify-center">
-              <img src="http://haythamfourati.local/wp-content/uploads/2025/06/profile-picture-number2.jpg" alt="Haytham Fourati" class="rounded-lg shadow-2xl object-cover w-full h-auto max-w-sm">
+                            <img src="<?php echo home_url('/wp-content/uploads/2025/06/profile-picture-number2.jpg'); ?>" alt="Haytham Fourati" class="rounded-lg shadow-2xl object-cover w-full h-auto max-w-sm">
           </div>
           <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg shadow-lg">
               <h3 class="text-xl font-semibold text-white mb-6 text-center">Languages</h3>
