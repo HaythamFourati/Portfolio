@@ -11,7 +11,7 @@
 <div id="smooth-wrapper">
     <div id="smooth-content">
 
-        <header class="bg-[#0A192F] sticky top-0 z-50">
+                <header id="site-header" class="bg-[#0A192F] sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-between items-center py-4">
                     <div>

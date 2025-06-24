@@ -15,3 +15,11 @@
   overflow: visible;
   width: 100%;
 }
+
+#site-header {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#site-header.scrolled {
+  @apply bg-[#0A192F]/90 backdrop-blur-md shadow-md;
+}
