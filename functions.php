@@ -30,3 +30,9 @@ function boilerplate_add_google_fonts_preconnect($hints, $relation_type) {
     return $hints;
 }
 add_filter('wp_resource_hints', 'boilerplate_add_google_fonts_preconnect', 10, 2);
+
+// Control excerpt length
+function custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

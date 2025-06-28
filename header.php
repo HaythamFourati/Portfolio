@@ -23,6 +23,7 @@
                             <li><a href="<?php echo get_home_url(); ?>#about" class="text-gray-300 hover:text-white transition duration-300">About</a></li>
                             <li><a href="<?php echo get_home_url(); ?>#skills" class="text-gray-300 hover:text-white transition duration-300">Skills</a></li>
                             <li><a href="<?php echo get_home_url(); ?>#projects" class="text-gray-300 hover:text-white transition duration-300">Projects</a></li>
+                            <li><a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="text-gray-300 hover:text-white transition duration-300">Blog</a></li>
                             <li><a href="<?php echo get_home_url(); ?>#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a></li>
                         </ul>
                     </nav>
@@ -54,6 +55,7 @@
                     <a href="<?php echo get_home_url(); ?>#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">About</a>
                     <a href="<?php echo get_home_url(); ?>#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Skills</a>
                     <a href="<?php echo get_home_url(); ?>#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Projects</a>
+                    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Blog</a>
                     <a href="<?php echo get_home_url(); ?>#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contact</a>
                 </div>
             </div>
