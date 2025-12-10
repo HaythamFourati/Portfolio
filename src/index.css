@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Base styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FAFAFA;
+  color: #1a1a1a;
+}
+
+/* For GSAP ScrollSmoother */
+#smooth-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+}
+
+#site-header {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#site-header.scrolled {
+  @apply bg-white/90 backdrop-blur-md shadow-md;
+}
+
+/* Image Reveal Animation Styles */
+.image-reveal-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-reveal-box .reveal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+}
+
+.image-reveal-box .uncover {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.image-reveal-box .uncover_slice {
+  height: 100%;
+  flex-grow: 1;
+  background: #FAFAFA;
+}
+
+/* Decorative SVG Animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 25s linear infinite;
+}
+
+/* Hero text animation styles */
+#hero h1 {
+  perspective: 1000px;
+}
+
+#hero h1 .char {
+  display: inline-block;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+
+/* Fade in animation for delayed elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
