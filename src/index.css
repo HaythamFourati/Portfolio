@@ -111,3 +111,60 @@ body {
     transform: scale(1) rotate(0deg);
   }
 }
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* GPU acceleration hints for animated elements */
+.timeline-item,
+.timeline-node,
+.timeline-content,
+#hero h1,
+#hero .inline-flex,
+.image-reveal-box,
+#floating-photo {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* GPU acceleration for pulsing/bouncing elements */
+.animate-pulse,
+.animate-ping,
+.animate-bounce {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  #smooth-wrapper {
+    position: relative !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  
+  #smooth-content {
+    transform: none !important;
+  }
+  
+  .animate-pulse,
+  .animate-ping,
+  .animate-bounce {
+    animation: none !important;
+  }
+}
+
+/* Hide expensive blur effects on mobile for better performance */
+@media (max-width: 768px) {
+  .blur-3xl {
+    filter: blur(40px) !important; /* Reduce blur radius */
+    opacity: 0.5 !important;
+  }
+}

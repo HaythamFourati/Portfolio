@@ -6,13 +6,29 @@ import { SplitText } from 'gsap/SplitText';
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // create the smooth scroller
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  // Detect mobile/low-end devices
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const isLowEnd = navigator.hardwareConcurrency <= 4 || isMobile;
+  
+  // Configure GSAP for better performance
+  gsap.config({ force3D: true });
+  
+  // Skip heavy animations if user prefers reduced motion
+  if (prefersReducedMotion) {
+    gsap.globalTimeline.timeScale(100); // Speed through animations
+  }
+
+  // Create smooth scroller with device-appropriate settings
   const smoother = ScrollSmoother.create({
     wrapper: '#smooth-wrapper',
     content: '#smooth-content',
-    smooth: 1.2, // how long (in seconds) it takes to "catch up" to the native scroll position
-    effects: true, // looks for data-speed and data-lag attributes on elements
-    smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch)
+    smooth: isLowEnd ? 0.5 : 1.2,
+    effects: !isLowEnd,
+    smoothTouch: false, // Native scroll on touch is smoother
+    normalizeScroll: !isMobile,
   });
 
   // Mobile menu toggle
@@ -154,19 +170,35 @@ document.addEventListener('DOMContentLoaded', () => {
       mouseY = heroBounds.height / 2;
     });
     
-    // Smooth animation loop with GSAP ticker
-    gsap.ticker.add(() => {
-      // Lerp for smooth following (0.05 = very smooth/slow, 0.2 = faster)
+    // Smooth animation loop - only active when hovering hero (performance)
+    let isHovering = false;
+    
+    const updatePosition = () => {
+      if (!isHovering) return;
+      
+      // Lerp for smooth following
       currentX += (mouseX - currentX) * 0.08;
       currentY += (mouseY - currentY) * 0.08;
       
-      // Apply position
+      // Apply position with GPU-accelerated transform
       gsap.set(floatingPhoto, {
         left: currentX,
         top: currentY,
         xPercent: -50,
-        yPercent: -50
+        yPercent: -50,
+        force3D: true
       });
+      
+      requestAnimationFrame(updatePosition);
+    };
+    
+    heroSection.addEventListener('mouseenter', () => {
+      isHovering = true;
+      requestAnimationFrame(updatePosition);
+    });
+    
+    heroSection.addEventListener('mouseleave', () => {
+      isHovering = false;
     });
     
     // Fade in the photo after hero animation
