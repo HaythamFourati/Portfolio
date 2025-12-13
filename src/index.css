@@ -161,10 +161,48 @@ body {
   }
 }
 
-/* Hide expensive blur effects on mobile for better performance */
-@media (max-width: 768px) {
+/* Mobile performance: disable ScrollSmoother wrapper styles */
+@media (max-width: 767px) {
+  #smooth-wrapper {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  #smooth-content {
+    transform: none !important;
+  }
+  
+  /* Hide expensive blur effects on mobile */
   .blur-3xl {
-    filter: blur(40px) !important; /* Reduce blur radius */
-    opacity: 0.5 !important;
+    filter: blur(30px) !important;
+    opacity: 0.4 !important;
+  }
+  
+  /* Ensure all content is visible without JS animations */
+  section,
+  section h2,
+  section h2 ~ *,
+  #hero .inline-flex,
+  #hero h1,
+  #hero p,
+  #hero .flex-wrap,
+  #hero .grid > div,
+  .timeline-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Hide floating photo on mobile */
+  #floating-photo {
+    display: none !important;
+  }
+  
+  /* Keep header dark on mobile - override .scrolled class */
+  #site-header,
+  #site-header.scrolled {
+    background-color: #1a1a1a !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
   }
 }

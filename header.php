@@ -49,7 +49,7 @@
                 </div>
             </div>
             <!-- Mobile menu, show/hide based on menu state -->
-            <div id="mobile-menu" class="md:hidden bg-[#1a1a1a] border-t border-gray-700">
+            <div id="mobile-menu" class="hidden md:hidden bg-[#1a1a1a] border-t border-gray-700">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="<?php echo get_home_url(); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">Home</a>
                     <a href="<?php echo get_home_url(); ?>#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">About</a>

@@ -6,42 +6,49 @@ import { SplitText } from 'gsap/SplitText';
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Check for reduced motion preference
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
-  // Detect mobile/low-end devices
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const isLowEnd = navigator.hardwareConcurrency <= 4 || isMobile;
+  // Detect mobile devices
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
   
   // Configure GSAP for better performance
   gsap.config({ force3D: true });
-  
-  // Skip heavy animations if user prefers reduced motion
-  if (prefersReducedMotion) {
-    gsap.globalTimeline.timeScale(100); // Speed through animations
+
+  // On mobile: skip ScrollSmoother entirely, only run image reveals
+  if (isMobile) {
+    // Remove smooth-wrapper fixed positioning for native scroll
+    const wrapper = document.getElementById('smooth-wrapper');
+    const content = document.getElementById('smooth-content');
+    if (wrapper) {
+      wrapper.style.position = 'relative';
+      wrapper.style.height = 'auto';
+      wrapper.style.overflow = 'visible';
+    }
+    if (content) {
+      content.style.transform = 'none';
+    }
+    
+    // Only run image reveal animations on mobile
+    initImageReveals();
+    initMobileMenu();
+    return; // Exit early - no other animations on mobile
   }
 
-  // Create smooth scroller with device-appropriate settings
+  // Desktop: Full animations
   const smoother = ScrollSmoother.create({
     wrapper: '#smooth-wrapper',
     content: '#smooth-content',
-    smooth: isLowEnd ? 0.5 : 1.2,
-    effects: !isLowEnd,
-    smoothTouch: false, // Native scroll on touch is smoother
-    normalizeScroll: !isMobile,
+    smooth: 1.2,
+    effects: true,
+    smoothTouch: false,
+    normalizeScroll: true,
   });
 
-  // Mobile menu toggle
+  // Mobile menu toggle - menu is hidden by default via HTML class
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
   if (mobileMenuButton && mobileMenu) {
-    // Start with the menu hidden by setting its style directly
-    mobileMenu.style.display = 'none';
-
     mobileMenuButton.addEventListener('click', () => {
-      const isMenuHidden = mobileMenu.style.display === 'none';
-      mobileMenu.style.display = isMenuHidden ? 'block' : 'none';
+      mobileMenu.classList.toggle('hidden');
     });
   }
 
@@ -333,7 +340,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- IMAGE REVEAL ANIMATIONS ---
+  // --- IMAGE REVEAL ANIMATIONS (Desktop) ---
+  initImageReveals();
+});
+
+// ===== EXTRACTED FUNCTIONS FOR MOBILE COMPATIBILITY =====
+
+function initMobileMenu() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    // Menu is hidden by default via HTML class, just toggle it
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+}
+
+function initImageReveals() {
   const revealBoxes = gsap.utils.toArray('.image-reveal-box');
 
   revealBoxes.forEach((box) => {
@@ -344,18 +369,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHeroImage = box.closest('#hero') !== null;
     
     const revealTl = gsap.timeline({
-      paused: !isHeroImage, // Pause non-hero timelines initially
+      paused: !isHeroImage,
       scrollTrigger: isHeroImage ? null : {
         trigger: box,
         start: 'top 85%',
         end: 'bottom 15%',
-        toggleActions: 'play reverse play reverse', // Play on enter, reverse on leave
+        toggleActions: 'play reverse play reverse',
         onEnter: () => revealTl.play(),
         onLeave: () => revealTl.reverse(),
         onEnterBack: () => revealTl.play(),
         onLeaveBack: () => revealTl.reverse(),
       },
-      delay: isHeroImage ? 0.3 : 0, // Small delay for hero image
+      delay: isHeroImage ? 0.3 : 0,
     });
 
     revealTl
@@ -375,6 +400,6 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 1.2, 
           ease: 'power4.inOut' 
         }, 
-        '<'); // Start at same time as slices
+        '<');
   });
-});
+}
