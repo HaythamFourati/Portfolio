@@ -1,11 +1,47 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Base styles */
+/* Scan PHP + JS for utility usage (Tailwind v4 explicit sources). */
+@source "../**/*.php";
+@source "./**/*.js";
+
+/* ===== AGENT-CONSOLE DESIGN TOKENS ===== */
+@theme {
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --color-canvas: #0b0b12;
+  --color-surface: #14141c;
+  --color-surface-2: #1c1c26;
+  --color-line: #2a2a36;
+  --color-ink: #f4f4f7;
+  --color-muted: #a7a7b4;
+  --color-faint: #75757f;
+  --color-lime: #b6f23d;
+  --color-lime-ink: #16210a;
+  --color-violet: #9a6bff;
+}
+
+/* Base styles (light default — blog/single/archive) */
 body {
   font-family: 'Inter', sans-serif;
   background-color: #FAFAFA;
   color: #1a1a1a;
+}
+
+/* Dark agent-console theme — front page only */
+body.home-console {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+}
+
+/* Faint dot grid + scanline texture on the console canvas */
+body.home-console #smooth-content {
+  background-image:
+    radial-gradient(rgba(154, 107, 255, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
 }
 
 /* For GSAP ScrollSmoother */
@@ -29,6 +65,60 @@ body {
 
 #site-header.scrolled {
   @apply bg-white/90 backdrop-blur-md shadow-md;
+}
+
+/* On the dark home page the header stays dark when scrolled */
+body.home-console #site-header,
+body.home-console #site-header.scrolled {
+  background-color: rgba(11, 11, 18, 0.78);
+  backdrop-filter: blur(12px);
+  box-shadow: none;
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* ===== CONSOLE PRIMITIVES ===== */
+
+/* Blinking cursor block */
+.console-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.08em;
+  vertical-align: -0.16em;
+  background-color: var(--color-lime);
+  animation: console-blink 1.05s steps(1) infinite;
+}
+@keyframes console-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Lime glow used sparingly on live signals */
+.lime-glow {
+  box-shadow: 0 0 0 1px rgba(182, 242, 61, 0.35), 0 0 28px -6px rgba(182, 242, 61, 0.55);
+}
+
+/* Hairline corner ticks for the console window */
+.console-window {
+  position: relative;
+}
+
+/* "Shipping" meter fill (filled by default; GSAP animates from 0 on desktop) */
+.ship-meter > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--color-lime);
+}
+
+/* Work listing rows */
+.work-row {
+  transition: background-color 0.25s ease, padding-left 0.25s ease;
+}
+.work-row:hover,
+.work-row:focus-within {
+  background-color: var(--color-surface);
+  padding-left: 1.25rem;
 }
 
 /* Image Reveal Animation Styles */
@@ -59,34 +149,17 @@ body {
 .image-reveal-box .uncover_slice {
   height: 100%;
   flex-grow: 1;
-  background: #FAFAFA;
+  background: var(--color-canvas);
 }
 
 /* Decorative SVG Animations */
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin-slow-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
-}
-
-.animate-spin-slow-reverse {
-  animation: spin-slow-reverse 25s linear infinite;
 }
 
 /* Hero text animation styles */
@@ -100,34 +173,24 @@ body {
   will-change: transform, opacity;
 }
 
-/* Fade in animation for delayed elements */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0) rotate(-180deg);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+  from { opacity: 0; transform: scale(0) rotate(-180deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 /* ===== PERFORMANCE OPTIMIZATIONS ===== */
 
-/* GPU acceleration hints for animated elements */
 .timeline-item,
 .timeline-node,
 .timeline-content,
 #hero h1,
-#hero .inline-flex,
-.image-reveal-box,
-#floating-photo {
+.work-row,
+.image-reveal-box {
   will-change: transform, opacity;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
-/* GPU acceleration for pulsing/bouncing elements */
 .animate-pulse,
 .animate-ping,
 .animate-bounce {
@@ -143,21 +206,36 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   #smooth-wrapper {
     position: relative !important;
     overflow: visible !important;
     height: auto !important;
   }
-  
+
   #smooth-content {
     transform: none !important;
   }
-  
+
+  .console-cursor { animation: none !important; opacity: 1 !important; }
+  .ship-meter > span { width: 100% !important; }
+
   .animate-pulse,
   .animate-ping,
   .animate-bounce {
     animation: none !important;
+  }
+
+  /* Ensure every JS-animated element is visible without motion */
+  section,
+  section h1,
+  section h2,
+  section h2 ~ *,
+  #hero [data-hero],
+  .work-row,
+  .timeline-content {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -168,40 +246,27 @@ body {
     height: auto !important;
     overflow: visible !important;
   }
-  
+
   #smooth-content {
     transform: none !important;
   }
-  
-  /* Hide expensive blur effects on mobile */
-  .blur-3xl {
-    filter: blur(30px) !important;
-    opacity: 0.4 !important;
-  }
-  
+
   /* Ensure all content is visible without JS animations */
   section,
+  section h1,
   section h2,
   section h2 ~ *,
-  #hero .inline-flex,
-  #hero h1,
-  #hero p,
-  #hero .flex-wrap,
-  #hero .grid > div,
+  #hero [data-hero],
+  .work-row,
   .timeline-content {
     opacity: 1 !important;
     transform: none !important;
   }
-  
-  /* Hide floating photo on mobile */
-  #floating-photo {
-    display: none !important;
-  }
-  
-  /* Keep header dark on mobile - override .scrolled class */
+
+  /* Keep header dark on mobile */
   #site-header,
   #site-header.scrolled {
-    background-color: #1a1a1a !important;
+    background-color: #0b0b12 !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
   }

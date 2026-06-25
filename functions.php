@@ -4,6 +4,10 @@ function boilerplate_load_assets() {
   wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), '1.0', true);
   wp_enqueue_script('animations', get_theme_file_uri('/build/animations.js'), array(), '1.0', true);
   wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'));
+  // Primary type system: Geist (display/body) + JetBrains Mono (console chrome).
+  wp_enqueue_style('google-fonts-geist', 'https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap', array(), null);
+  wp_enqueue_style('google-fonts-jetbrains-mono', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap', array(), null);
+  // Legacy fonts retained for blog/single/archive templates that reference them inline.
   wp_enqueue_style('google-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap', array(), null);
   wp_enqueue_style('google-fonts-outfit', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap', array(), null);
 }
@@ -37,3 +41,12 @@ function custom_excerpt_length( $length ) {
     return 20;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+// Flag the front page so the dark "agent console" theme applies only there.
+function portfolio_body_classes( $classes ) {
+    if ( is_front_page() ) {
+        $classes[] = 'home-console';
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'portfolio_body_classes' );

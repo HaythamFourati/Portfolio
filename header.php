@@ -11,20 +11,20 @@
 <div id="smooth-wrapper">
     <div id="smooth-content">
 
-                <header id="site-header" class="bg-[#1a1a1a] sticky top-0 z-50">
+                <header id="site-header" class="bg-[#0b0b12] sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-between items-center py-4">
                     <div>
-                        <a href="<?php echo get_home_url(); ?>" class="text-xl md:text-2xl font-semibold text-white">Haytham<span class="text-lime-400">.</span></a>
+                        <a href="<?php echo get_home_url(); ?>" class="font-mono text-lg md:text-xl font-semibold text-white tracking-tight">haytham<span class="text-lime-400">@dev</span></a>
                     </div>
                     <nav class="hidden md:block">
-                        <ul class="flex space-x-8">
-                            <li><a href="<?php echo get_home_url(); ?>" class="text-gray-300 hover:text-lime-400 transition duration-300">Home</a></li>
-                            <li><a href="<?php echo get_home_url(); ?>#about" class="text-gray-300 hover:text-lime-400 transition duration-300">About</a></li>
-                            <li><a href="<?php echo get_home_url(); ?>#skills" class="text-gray-300 hover:text-lime-400 transition duration-300">Skills</a></li>
-                            <li><a href="<?php echo get_home_url(); ?>#projects" class="text-gray-300 hover:text-lime-400 transition duration-300">Projects</a></li>
-                            <li><a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="text-gray-300 hover:text-lime-400 transition duration-300">Blog</a></li>
-                            <li><a href="<?php echo get_home_url(); ?>#contact" class="text-gray-300 hover:text-lime-400 transition duration-300">Contact</a></li>
+                        <ul class="flex space-x-7 font-mono text-sm">
+                            <li><a href="<?php echo get_home_url(); ?>#work" class="text-gray-300 hover:text-lime-400 transition duration-300">work</a></li>
+                            <li><a href="<?php echo get_home_url(); ?>#workflow" class="text-gray-300 hover:text-lime-400 transition duration-300">process</a></li>
+                            <li><a href="<?php echo get_home_url(); ?>#stack" class="text-gray-300 hover:text-lime-400 transition duration-300">stack</a></li>
+                            <li><a href="<?php echo get_home_url(); ?>#about" class="text-gray-300 hover:text-lime-400 transition duration-300">about</a></li>
+                            <li><a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="text-gray-300 hover:text-lime-400 transition duration-300">blog</a></li>
+                            <li><a href="<?php echo get_home_url(); ?>#contact" class="text-gray-300 hover:text-lime-400 transition duration-300">contact</a></li>
                         </ul>
                     </nav>
                     <!-- Social Icons -->
@@ -49,14 +49,14 @@
                 </div>
             </div>
             <!-- Mobile menu, show/hide based on menu state -->
-            <div id="mobile-menu" class="hidden md:hidden bg-[#1a1a1a] border-t border-gray-700">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="<?php echo get_home_url(); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">Home</a>
-                    <a href="<?php echo get_home_url(); ?>#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">About</a>
-                    <a href="<?php echo get_home_url(); ?>#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">Skills</a>
-                    <a href="<?php echo get_home_url(); ?>#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">Projects</a>
-                    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">Blog</a>
-                    <a href="<?php echo get_home_url(); ?>#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-lime-400 hover:bg-gray-800">Contact</a>
+            <div id="mobile-menu" class="hidden md:hidden bg-[#0b0b12] border-t border-gray-800">
+                <div class="px-2 pt-2 pb-3 space-y-1 font-mono">
+                    <a href="<?php echo get_home_url(); ?>#work" class="block px-3 py-2 rounded-md text-base text-gray-300 hover:text-lime-400 hover:bg-gray-800">work</a>
+                    <a href="<?php echo get_home_url(); ?>#workflow" class="block px-3 py-2 rounded-md text-base text-gray-300 hover:text-lime-400 hover:bg-gray-800">process</a>
+                    <a href="<?php echo get_home_url(); ?>#stack" class="block px-3 py-2 rounded-md text-base text-gray-300 hover:text-lime-400 hover:bg-gray-800">stack</a>
+                    <a href="<?php echo get_home_url(); ?>#about" class="block px-3 py-2 rounded-md text-base text-gray-300 hover:text-lime-400 hover:bg-gray-800">about</a>
+                    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="block px-3 py-2 rounded-md text-base text-gray-300 hover:text-lime-400 hover:bg-gray-800">blog</a>
+                    <a href="<?php echo get_home_url(); ?>#contact" class="block px-3 py-2 rounded-md text-base text-gray-300 hover:text-lime-400 hover:bg-gray-800">contact</a>
                 </div>
             </div>
         </header>
