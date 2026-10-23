@@ -9,95 +9,101 @@ get_header(); ?>
 
 <div class="bg-canvas text-ink font-display selection:bg-lime selection:text-lime-ink">
 
-  <!-- ============== HERO · AGENT CONSOLE ============== -->
-  <section id="hero" class="relative min-h-[100svh] flex items-center px-4 pt-28 pb-16">
-    <div class="w-full max-w-6xl mx-auto">
+  <!-- ============== HERO · SPLIT PORTRAIT ============== -->
+  <section id="hero" class="relative min-h-[100svh] flex items-center px-4 pt-28 pb-16 overflow-hidden">
+    <!-- Ambient glow behind the portrait -->
+    <div class="pointer-events-none absolute -right-32 top-1/4 w-[36rem] h-[36rem] rounded-full bg-violet/15 blur-[120px]" aria-hidden="true"></div>
 
-      <!-- Console window -->
-      <div class="console-window rounded-xl border border-line bg-surface/70 backdrop-blur-sm overflow-hidden shadow-2xl shadow-black/40">
+    <div class="relative w-full max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-        <!-- Title bar -->
-        <div class="flex items-center gap-3 px-4 sm:px-5 py-3 border-b border-line bg-surface-2/60">
-          <span class="flex gap-1.5" aria-hidden="true">
-            <span class="w-3 h-3 rounded-full bg-line"></span>
-            <span class="w-3 h-3 rounded-full bg-line"></span>
-            <span class="w-3 h-3 rounded-full bg-lime/80"></span>
+      <!-- Copy -->
+      <div class="lg:col-span-7 order-2 lg:order-1">
+
+        <!-- Typed prompt -->
+        <p class="inline-flex flex-wrap items-baseline gap-x-2 font-mono text-xs sm:text-sm border border-line bg-surface/70 rounded-md px-3 py-2">
+          <span class="text-violet shrink-0">haytham@dev</span><span class="text-faint shrink-0">:~$</span>
+          <span class="text-ink">
+            <span data-typed data-text="ship production sites 10× faster — with AI">ship production sites 10× faster — with AI</span><span class="console-cursor align-middle" data-cursor aria-hidden="true"></span>
           </span>
-          <span class="font-mono text-xs sm:text-sm text-faint truncate">haytham@dev&nbsp;<span class="text-faint/70">~/portfolio</span></span>
-          <span class="ml-auto font-mono text-[11px] text-faint hidden sm:inline">zsh — 80×24</span>
+        </p>
+
+        <h1 class="mt-8 text-[clamp(3rem,8vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.035em]">
+          <span class="block whitespace-nowrap">Haytham</span>
+          <span class="block whitespace-nowrap">Fourati</span>
+        </h1>
+
+        <p data-hero class="mt-6 text-xl sm:text-2xl text-ink/90 max-w-xl text-pretty">
+          Front-End &amp; WordPress engineer.
+          <span class="inline-flex items-center gap-1.5 font-mono text-sm text-lime align-middle">
+            <span class="w-1.5 h-1.5 rounded-full bg-lime"></span>AI-native
+          </span>
+        </p>
+
+        <p data-hero class="mt-4 text-base sm:text-lg text-muted max-w-xl leading-relaxed text-pretty">
+          I pair with AI to ship production-grade websites in a fraction of the time — then bring the
+          architecture, taste, and the final 20% that actually makes it to production.
+        </p>
+
+        <!-- CTAs -->
+        <div data-hero class="mt-9 flex flex-wrap gap-3">
+          <a href="#work" class="group inline-flex items-center gap-2 bg-lime text-lime-ink font-semibold px-6 py-3.5 rounded-md transition-transform duration-300 hover:-translate-y-0.5">
+            View the work
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 border border-line hover:border-muted text-ink font-medium px-6 py-3.5 rounded-md transition-colors duration-300">
+            Let's talk
+          </a>
         </div>
 
-        <!-- Console body -->
-        <div class="p-5 sm:p-8 md:p-10 font-mono text-sm sm:text-base">
-
-          <!-- Typed prompt -->
-          <p class="flex flex-wrap items-baseline gap-x-2 leading-relaxed">
-            <span class="text-violet shrink-0">haytham@dev</span><span class="text-faint shrink-0">:~$</span>
-            <span class="text-ink">
-              <span data-typed data-text="build a developer who ships production sites 10× faster — with AI">build a developer who ships production sites 10× faster — with AI</span><span class="console-cursor align-middle" data-cursor aria-hidden="true"></span>
-            </span>
-          </p>
-
-          <!-- Generating line -->
-          <p data-hero class="mt-3 text-faint flex items-center gap-2">
-            <span class="text-lime">▸</span> compiling profile<span class="text-faint">…</span> <span class="text-lime">done</span> <span class="text-faint">(0.42s)</span>
-          </p>
-
-          <!-- Resolved identity -->
-          <div class="mt-8 sm:mt-10 font-display">
-            <p data-hero class="font-mono text-xs text-faint mb-4">// identity resolved</p>
-
-            <h1 class="text-[clamp(2.6rem,9vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-balance">
-              Haytham Fourati
-            </h1>
-
-            <p data-hero class="mt-5 text-lg sm:text-xl text-muted max-w-2xl text-pretty">
-              Front-End &amp; WordPress engineer.
-              <span class="inline-flex items-center gap-1.5 font-mono text-sm text-lime align-middle">
-                <span class="w-1.5 h-1.5 rounded-full bg-lime"></span>AI-native
-              </span>
-            </p>
-
-            <p data-hero class="mt-4 text-base sm:text-lg text-muted max-w-2xl leading-relaxed text-pretty">
-              I pair with AI to ship production-grade websites in a fraction of the time — then bring the
-              architecture, taste, and the final 20% that actually makes it to production.
-            </p>
-
-            <!-- Live shipping status -->
-            <div data-hero class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs sm:text-sm">
-              <span class="inline-flex items-center gap-2 text-muted">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-lime"></span>
-                </span>
-                status: <span class="text-lime">available for hire</span>
-              </span>
-              <span class="inline-flex items-center gap-2 text-muted">
-                throughput:
-                <span class="ship-meter inline-block w-28 h-2.5 rounded-full bg-surface-2 overflow-hidden align-middle" aria-hidden="true"><span></span></span>
-                <span class="text-lime">10×</span>
-              </span>
-            </div>
-
-            <!-- CTAs -->
-            <div data-hero class="mt-9 flex flex-wrap gap-3 font-display">
-              <a href="#work" class="group inline-flex items-center gap-2 bg-lime text-lime-ink font-semibold px-6 py-3.5 rounded-md transition-transform duration-300 hover:-translate-y-0.5">
-                View the work
-                <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </a>
-              <a href="#contact" class="inline-flex items-center gap-2 border border-line hover:border-muted text-ink font-medium px-6 py-3.5 rounded-md transition-colors duration-300">
-                Let's talk
-              </a>
-            </div>
+        <!-- Stats strip -->
+        <dl data-hero class="mt-12 grid grid-cols-3 max-w-lg border-t border-line pt-6 font-mono">
+          <div>
+            <dt class="text-[11px] text-faint uppercase tracking-wider">experience</dt>
+            <dd class="mt-1 text-2xl font-display font-semibold text-ink">5+ yrs</dd>
           </div>
-        </div>
+          <div>
+            <dt class="text-[11px] text-faint uppercase tracking-wider">focus</dt>
+            <dd class="mt-1 text-2xl font-display font-semibold text-ink">Custom WP</dd>
+          </div>
+          <div>
+            <dt class="text-[11px] text-faint uppercase tracking-wider">speaks</dt>
+            <dd class="mt-1 text-2xl font-display font-semibold text-lime">EN · AR · FR</dd>
+          </div>
+        </dl>
       </div>
 
-      <!-- Scroll hint -->
-      <div class="mt-8 flex justify-center">
-        <span class="font-mono text-xs text-faint inline-flex items-center gap-2">
-          <span class="animate-bounce">↓</span> scroll to explore
-        </span>
+      <!-- Portrait -->
+      <div data-hero class="lg:col-span-5 order-1 lg:order-2 w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none">
+        <figure class="relative">
+          <div class="rounded-2xl border border-line bg-surface overflow-hidden shadow-2xl shadow-black/50">
+            <!-- Window bar -->
+            <div class="flex items-center gap-3 px-4 py-2.5 border-b border-line bg-surface-2/80">
+              <span class="flex gap-1.5" aria-hidden="true">
+                <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-lime/80"></span>
+              </span>
+              <span class="font-mono text-[11px] text-faint truncate">~/portfolio/haytham.webp</span>
+            </div>
+            <img src="<?php echo esc_url(get_theme_file_uri('/images/Warm Professional Office Headshot.webp')); ?>"
+                 alt="Haytham Fourati, front-end developer" width="1122" height="1402"
+                 class="block w-full aspect-[4/5] object-cover object-top" fetchpriority="high">
+          </div>
+
+          <!-- Floating status chip -->
+          <figcaption class="absolute -bottom-5 left-4 sm:-left-6 inline-flex items-center gap-2 bg-canvas/90 backdrop-blur-sm border border-line rounded-lg px-4 py-3 font-mono text-xs text-muted shadow-xl shadow-black/40">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-lime"></span>
+            </span>
+            status: <span class="text-lime">available for hire</span>
+          </figcaption>
+
+          <!-- Floating location chip -->
+          <span class="absolute top-16 -right-3 sm:-right-6 bg-canvas/90 backdrop-blur-sm border border-line rounded-lg px-3 py-2 font-mono text-[11px] text-muted shadow-xl shadow-black/40">
+            📍 remote · worldwide
+          </span>
+        </figure>
       </div>
     </div>
   </section>
@@ -159,27 +165,27 @@ get_header(); ?>
             Shipped &amp; live.
           </h2>
         </div>
-        <p class="font-mono text-sm text-faint">$ ls selected-work/ <span class="text-muted">— 6 results</span></p>
+        <p class="font-mono text-sm text-faint">$ ls selected-work/ <span class="text-muted">— 7 results</span></p>
       </div>
 
       <!-- Featured project -->
-      <a href="https://precisionaestheticsmd.com" target="_blank" rel="noopener"
+      <a href="https://successcircles.com" target="_blank" rel="noopener"
          class="group block relative rounded-xl overflow-hidden border border-line mb-px">
         <div class="image-reveal-box w-full aspect-[16/9] md:aspect-[21/9]">
-          <img src="https://precisionaestheticsmd.com/wp-content/uploads/2024/08/iStock-13201376081-1400x768.jpg"
-               alt="Precision Aesthetics MD — homepage of a Maryland medical spa, clean editorial layout" class="reveal-img" loading="lazy">
+          <img src="<?php echo esc_url(get_theme_file_uri('/images/Success-Circles.webp')); ?>"
+               alt="Success Circles — homepage of an advisory community for established entrepreneurs, dark editorial layout" class="reveal-img object-top" loading="lazy">
           <div class="uncover"><div class="uncover_slice"></div><div class="uncover_slice"></div><div class="uncover_slice"></div></div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/40 to-transparent"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
           <div class="flex items-center gap-3 font-mono text-xs text-faint mb-2">
             <span class="text-lime">[ featured ]</span>
-            <span>medical / aesthetics</span>
+            <span>coaching / community</span>
           </div>
-          <h3 class="text-2xl sm:text-3xl font-semibold text-ink mb-1">Precision Aesthetics MD</h3>
-          <p class="text-muted max-w-xl text-pretty">A sleek, conversion-focused site for a medical spa — clean editorial design and a fast, trustworthy booking experience.</p>
+          <h3 class="text-2xl sm:text-3xl font-semibold text-ink mb-1">Success Circles</h3>
+          <p class="text-muted max-w-xl text-pretty">An advisory community for established entrepreneurs — editorial design built to turn visitors into members.</p>
           <span class="mt-4 inline-flex items-center gap-2 font-mono text-sm text-lime">
-            precisionaestheticsmd.com
+            successcircles.com
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8M17 7V16"/></svg>
           </span>
         </div>
@@ -189,21 +195,18 @@ get_header(); ?>
       <ul class="rounded-b-xl overflow-hidden border-x border-b border-line divide-y divide-line">
         <?php
         $projects = [
-          ['n' => '02', 'name' => 'Kidzz Kreations',        'tag' => 'entertainment', 'url' => 'https://kidzzkreations.com/',        'host' => 'kidzzkreations.com',     'desc' => "Turning kids' party dreams into reality with playful, memorable entertainment.", 'img' => 'https://haythamfourati.com/wp-content/uploads/2025/06/Kidzz-Kreations.png'],
-          ['n' => '03', 'name' => 'Local Vocal Marketing',  'tag' => 'marketing',     'url' => 'https://localvocalmarketing.com',   'host' => 'localvocalmarketing.com', 'desc' => 'A corporate site for a marketing agency showcasing services and portfolio.', 'img' => 'https://haythamfourati.com/wp-content/uploads/2025/06/Local-Vocal-Marketing-Maryland-web-design.png'],
-          ['n' => '04', 'name' => 'Care Giving Angels of MD','tag' => 'healthcare',    'url' => 'https://caregivingangelsofmd.com/', 'host' => 'caregivingangelsofmd.com','desc' => 'A compassionate, trust-first website for a home care agency.', 'img' => 'https://haythamfourati.com/wp-content/uploads/2025/06/Caregiving-Angels-of-Maryland.png'],
-          ['n' => '05', 'name' => 'ADHD Telehealth Testing', 'tag' => 'telehealth',    'url' => 'https://adhdtestcalifornia.com/',   'host' => 'adhdtestcalifornia.com',  'desc' => 'A friendly, accessible platform for ADHD testing across California.', 'img' => 'https://haythamfourati.com/wp-content/uploads/2025/06/ADHD-Telehealth-Testing-Across-California.png'],
-          ['n' => '06', 'name' => 'Cullen Burke',            'tag' => 'legal',         'url' => 'https://www.cullenburke.com/',      'host' => 'cullenburke.com',        'desc' => 'A strong, authoritative presence for a criminal defense lawyer.', 'img' => 'https://haythamfourati.com/wp-content/uploads/2025/06/Ocean-City-Criminal-Defense-Lawyer-Cullen-Burke.png'],
+          ['n' => '02', 'name' => 'Precision Aesthetics MD', 'tag' => 'aesthetics',    'url' => 'https://precisionaestheticsmd.com', 'host' => 'precisionaestheticsmd.com', 'desc' => 'A sleek, conversion-focused site for a medical spa with a fast, trustworthy booking experience.'],
+          ['n' => '03', 'name' => 'Kidzz Kreations',        'tag' => 'entertainment', 'url' => 'https://kidzzkreations.com/',        'host' => 'kidzzkreations.com',     'desc' => "Turning kids' party dreams into reality with playful, memorable entertainment."],
+          ['n' => '04', 'name' => 'Local Vocal Marketing',  'tag' => 'marketing',     'url' => 'https://localvocalmarketing.com',   'host' => 'localvocalmarketing.com', 'desc' => 'A corporate site for a marketing agency showcasing services and portfolio.'],
+          ['n' => '05', 'name' => 'Care Giving Angels of MD','tag' => 'healthcare',    'url' => 'https://caregivingangelsofmd.com/', 'host' => 'caregivingangelsofmd.com','desc' => 'A compassionate, trust-first website for a home care agency.'],
+          ['n' => '06', 'name' => 'ADHD Telehealth Testing', 'tag' => 'telehealth',    'url' => 'https://adhdtestcalifornia.com/',   'host' => 'adhdtestcalifornia.com',  'desc' => 'A friendly, accessible platform for ADHD testing across California.'],
+          ['n' => '07', 'name' => 'Cullen Burke',            'tag' => 'legal',         'url' => 'https://www.cullenburke.com/',      'host' => 'cullenburke.com',        'desc' => 'A strong, authoritative presence for a criminal defense lawyer.'],
         ];
         foreach ($projects as $p) : ?>
           <li>
             <a href="<?php echo esc_url($p['url']); ?>" target="_blank" rel="noopener"
                class="work-row flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-5 group">
               <span class="font-mono text-xs text-faint w-6 shrink-0"><?php echo $p['n']; ?></span>
-              <span class="hidden sm:block w-20 h-14 rounded-md overflow-hidden border border-line shrink-0 bg-surface-2">
-                <img src="<?php echo esc_url($p['img']); ?>" alt="<?php echo esc_attr($p['name']); ?> website thumbnail"
-                     class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              </span>
               <span class="min-w-0 flex-1">
                 <span class="block text-lg font-semibold text-ink group-hover:text-lime transition-colors"><?php echo $p['name']; ?></span>
                 <span class="block text-sm text-muted truncate text-pretty"><?php echo $p['desc']; ?></span>
@@ -399,7 +402,7 @@ get_header(); ?>
         <div class="lg:col-span-5 space-y-8">
           <div class="relative">
             <div class="rounded-xl overflow-hidden border border-line">
-              <img src="https://haythamfourati.com/wp-content/uploads/2025/06/profile-picture-number2.jpg"
+              <img src="<?php echo esc_url(get_theme_file_uri('/images/profile-picture-number2.jpg')); ?>"
                    alt="Haytham Fourati, front-end developer" class="w-full h-auto" loading="lazy">
             </div>
             <div class="absolute -bottom-5 -right-3 sm:-right-5 bg-surface border border-line p-4 rounded-xl">
