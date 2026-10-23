@@ -1,9 +1,9 @@
 <?php
 
 function boilerplate_load_assets() {
-  wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), '1.0', true);
-  wp_enqueue_script('animations', get_theme_file_uri('/build/animations.js'), array(), '1.0', true);
-  wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'));
+  wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), filemtime(get_theme_file_path('/build/index.js')), true);
+  wp_enqueue_script('animations', get_theme_file_uri('/build/animations.js'), array(), filemtime(get_theme_file_path('/build/animations.js')), true);
+  wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'), array(), filemtime(get_theme_file_path('/build/index.css')));
   // Primary type system: Geist (display/body) + JetBrains Mono (console chrome).
   wp_enqueue_style('google-fonts-geist', 'https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap', array(), null);
   wp_enqueue_style('google-fonts-jetbrains-mono', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap', array(), null);
