@@ -1,0 +1,39 @@
+name: Theme checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: theme-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Check PHP syntax (PHP 8.3 on Ubuntu 24.04)
+        run: |
+          php --version
+          find . -name '*.php' -not -path './node_modules/*' -not -path './.git/*' -print0 | xargs -0 -r -n1 php -l
+      - name: Check required production assets
+        run: |
+          test -s build/index.js
+          test -s build/index.css
+          test -s build/animations.js
