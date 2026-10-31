@@ -4,7 +4,7 @@ Visual system for the Haytham Fourati portfolio. Register: **brand**. Aesthetic 
 
 ## Theme
 
-Dark, near-black canvas that reads as a real working terminal — not a "dark mode toggle". Surfaces are tinted slightly toward violet (cool), not neutral gray. Lime is the live/active/AI signal (cursor, status, shipping). Violet is the secondary structural accent. Sharp 1px hairline borders and a faint dot/line grid carry the "console" feel; no decorative gradient blobs, no glass.
+Dark, near-black canvas that reads as a real working terminal — not a "dark mode toggle". Surfaces are tinted slightly toward violet (cool), not neutral gray. Lime is the live/active/AI signal (cursor, status, shipping). Violet is the secondary structural accent. Sharp 1px hairline borders and a faint dot/line grid carry the "console" feel. The hero sits on a live WebGL liquid-glass field (violet ramp, lime only in caustics); glass is reserved for small floating chips and the ghost CTA.
 
 ## Color
 
@@ -23,7 +23,7 @@ OKLCH, with hex fallbacks. Verified contrast against `--canvas`.
 | `--lime-ink` | `oklch(0.22 0.05 128)` | `#16210A` | Text on lime fills |
 | `--violet` | `oklch(0.68 0.19 295)` | `#9A6BFF` | Secondary accent: structure, links, prompt label |
 
-Rules: lime and violet are accents, never large fills except deliberate CTA/marker moments. Body text is `--ink` or `--muted` only — `--faint` never for essential reading. No `background-clip:text` gradient text. No glassmorphism as default.
+Rules: lime and violet are accents, never large fills except deliberate CTA/marker moments. Body text is `--ink` or `--muted` only — `--faint` never for essential reading. Section h2s use a subtle ink→muted text sheen (`.title-sheen`, 122°); accent spans inside keep their solid colour. Glass (`.glass`) only on small floating elements, never on content panels.
 
 ## Typography
 
@@ -55,6 +55,9 @@ Headline voice: lowercase or sentence-case statements, not ALL-CAPS shouting. Mo
 - Semantic z-index scale (base → sticky header → mobile menu → cursor-follow effects).
 
 ## Motion
+
+- **Hero field:** `src/scripts/heroShader.js` — raw WebGL2 fullscreen-triangle shader: fbm height field refracts a drifting gradient with RGB dispersion, caustics from curvature, grain + dither. Pointer follows through a spring chain (lead → body → lag). Paused off-screen / hidden tab, DPR capped at 1, reduced motion renders one still frame.
+- **Cursor-lit edges:** `.glow-edge` (violet) / `.glow-edge--lime` — radial blob at `--gx/--gy` masked to a 1px ring. Hover-capable pointers only.
 
 GSAP (already in stack: ScrollTrigger, ScrollSmoother, SplitText) + Lenis-style smooth via ScrollSmoother. Ease-out exponential curves; no bounce/elastic except a single deliberate node pop.
 

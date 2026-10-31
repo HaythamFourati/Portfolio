@@ -111,6 +111,97 @@ body.home-console #site-header.scrolled {
   background: var(--color-lime);
 }
 
+/* ===== CINEMATIC LAYER ===== */
+
+/* Hero: WebGL glass field behind the copy, faded in once the first frame is drawn */
+.hero-shader {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-shader.is-ready { opacity: 1; }
+
+/* Readability scrim: darkens behind the copy column, then melts into the page */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 80% at 22% 55%, rgba(11, 11, 18, 0.82) 0%, rgba(11, 11, 18, 0.45) 50%, rgba(11, 11, 18, 0) 80%),
+    linear-gradient(to bottom, rgba(11, 11, 18, 0) 70%, var(--color-canvas) 100%);
+}
+
+/* Cursor-lit border: a radial blob tracks the pointer, clipped to a 1.5px ring via mask xor */
+.glow-edge { position: relative; isolation: isolate; }
+.glow-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  background: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(196, 170, 255, 0.95) 0%, rgba(154, 107, 255, 0.45) 22%, transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glow-edge:hover::after { opacity: 1; }
+.glow-edge--lime::after {
+  background: radial-gradient(160px circle at var(--gx, 50%) var(--gy, 50%),
+    #f4ffd9 0%, rgba(182, 242, 61, 0.7) 20%, transparent 60%);
+}
+
+/* Layered glass: sheen + tinted aurora + white tint over a blurred backdrop, rim + deep shadow */
+.glass {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+    radial-gradient(120% 90% at 0% 0%, rgba(182, 242, 61, 0.07), transparent 55%),
+    radial-gradient(120% 90% at 100% 100%, rgba(154, 107, 255, 0.1), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)),
+    rgba(11, 11, 18, 0.62);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.07), 0 24px 60px -28px rgba(0, 0, 0, 0.9);
+}
+
+/* Lime CTA: top highlight + inner warm glow, lifts its glow on hover */
+.btn-lime {
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 -10px 18px -12px rgba(22, 33, 10, 0.55),
+    0 10px 30px -12px rgba(182, 242, 61, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-lime:hover {
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.55),
+    inset 0 -10px 18px -12px rgba(22, 33, 10, 0.55),
+    0 16px 44px -10px rgba(182, 242, 61, 0.65);
+}
+
+/* Section titles: soft ink -> muted sheen; accent spans keep their own colour */
+.title-sheen {
+  background-image: linear-gradient(122deg, var(--color-ink) 0%, var(--color-ink) 22%, #b9b9c6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block; /* gradient spans the text, not the column */
+}
+.title-sheen span { -webkit-text-fill-color: currentColor; }
+@media (forced-colors: active) {
+  .title-sheen { -webkit-text-fill-color: CanvasText; background-image: none; }
+}
+
 /* Work listing rows */
 .work-row {
   transition: background-color 0.25s ease, padding-left 0.25s ease;

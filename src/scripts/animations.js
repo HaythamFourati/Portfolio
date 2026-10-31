@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { SplitText } from 'gsap/SplitText';
+import { initHeroShader } from './heroShader';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
@@ -12,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.config({ force3D: true });
 
   // Note: sticky header + mobile-menu toggle are owned by src/index.js (loaded site-wide).
+
+  // Runs before the reduced-motion exit: those users get one still frame instead.
+  const heroCanvas = document.querySelector('.hero-shader');
+  if (heroCanvas) initHeroShader(heroCanvas, { still: prefersReducedMotion });
+  initBorderGlow();
 
   // --- REDUCED MOTION: show everything as-is, no entrance motion ---
   if (prefersReducedMotion) {
@@ -202,6 +208,20 @@ function initSectionReveals() {
       { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out' }
     );
   });
+}
+
+// ===== CURSOR BORDER GLOW =====
+// A radial blob tracks the pointer inside a 1px masked ring (see .glow-edge in CSS).
+// One delegated listener; position is element-local so it works under ScrollSmoother.
+function initBorderGlow() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  document.addEventListener('pointermove', (e) => {
+    const el = e.target.closest('.glow-edge');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--gx', `${e.clientX - r.left}px`);
+    el.style.setProperty('--gy', `${e.clientY - r.top}px`);
+  }, { passive: true });
 }
 
 // ===== SHARED =====

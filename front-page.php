@@ -11,8 +11,9 @@ get_header(); ?>
 
   <!-- ============== HERO · SPLIT PORTRAIT ============== -->
   <section id="hero" class="relative min-h-[100svh] flex items-center px-4 pt-28 pb-16 overflow-hidden">
-    <!-- Ambient glow behind the portrait -->
-    <div class="pointer-events-none absolute -right-32 top-1/4 w-[36rem] h-[36rem] rounded-full bg-violet/15 blur-[120px]" aria-hidden="true"></div>
+    <!-- Liquid-glass WebGL field (src/scripts/heroShader.js) + readability scrim -->
+    <canvas class="hero-shader" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
 
     <div class="relative w-full max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -20,7 +21,7 @@ get_header(); ?>
       <div class="lg:col-span-7 order-2 lg:order-1">
 
         <!-- Typed prompt -->
-        <p class="inline-flex flex-wrap items-baseline gap-x-2 font-mono text-xs sm:text-sm border border-line bg-surface/70 rounded-md px-3 py-2">
+        <p class="glass inline-flex flex-wrap items-baseline gap-x-2 font-mono text-xs sm:text-sm rounded-md px-3 py-2">
           <span class="text-violet shrink-0">haytham@dev</span><span class="text-faint shrink-0">:~$</span>
           <span class="text-ink">
             <span data-typed data-text="ship production sites 10× faster — with AI">ship production sites 10× faster — with AI</span><span class="console-cursor align-middle" data-cursor aria-hidden="true"></span>
@@ -46,11 +47,11 @@ get_header(); ?>
 
         <!-- CTAs -->
         <div data-hero class="mt-9 flex flex-wrap gap-3">
-          <a href="#work" class="group inline-flex items-center gap-2 bg-lime text-lime-ink font-semibold px-6 py-3.5 rounded-md transition-transform duration-300 hover:-translate-y-0.5">
+          <a href="#work" class="btn-lime glow-edge glow-edge--lime group inline-flex items-center gap-2 bg-lime text-lime-ink font-semibold px-6 py-3.5 rounded-md hover:-translate-y-0.5">
             View the work
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#contact" class="inline-flex items-center gap-2 border border-line hover:border-muted text-ink font-medium px-6 py-3.5 rounded-md transition-colors duration-300">
+          <a href="#contact" class="glass glow-edge inline-flex items-center gap-2 hover:border-muted text-ink font-medium px-6 py-3.5 rounded-md transition-colors duration-300">
             Let's talk
           </a>
         </div>
@@ -75,7 +76,7 @@ get_header(); ?>
       <!-- Portrait -->
       <div data-hero class="lg:col-span-5 order-1 lg:order-2 w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none">
         <figure class="relative">
-          <div class="rounded-2xl border border-line bg-surface overflow-hidden shadow-2xl shadow-black/50">
+          <div class="glow-edge rounded-2xl border border-line bg-surface overflow-hidden shadow-2xl shadow-black/50">
             <!-- Window bar -->
             <div class="flex items-center gap-3 px-4 py-2.5 border-b border-line bg-surface-2/80">
               <span class="flex gap-1.5" aria-hidden="true">
@@ -91,7 +92,7 @@ get_header(); ?>
           </div>
 
           <!-- Floating status chip -->
-          <figcaption class="absolute -bottom-5 left-4 sm:-left-6 inline-flex items-center gap-2 bg-canvas/90 backdrop-blur-sm border border-line rounded-lg px-4 py-3 font-mono text-xs text-muted shadow-xl shadow-black/40">
+          <figcaption class="glass absolute -bottom-5 left-4 sm:-left-6 inline-flex items-center gap-2 rounded-lg px-4 py-3 font-mono text-xs text-muted">
             <span class="relative flex h-2 w-2">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-lime"></span>
@@ -100,7 +101,7 @@ get_header(); ?>
           </figcaption>
 
           <!-- Floating location chip -->
-          <span class="absolute top-16 -right-3 sm:-right-6 bg-canvas/90 backdrop-blur-sm border border-line rounded-lg px-3 py-2 font-mono text-[11px] text-muted shadow-xl shadow-black/40">
+          <span class="glass absolute top-16 -right-3 sm:-right-6 rounded-lg px-3 py-2 font-mono text-[11px] text-muted">
             📍 remote · worldwide
           </span>
         </figure>
@@ -114,7 +115,7 @@ get_header(); ?>
 
       <div class="max-w-3xl">
         <p class="font-mono text-sm text-violet mb-4">~/ how-i-work</p>
-        <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-balance">
+        <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-balance">
           The AI-native workflow.<br><span class="text-muted">Days of boilerplate become hours.</span>
         </h2>
         <p class="mt-6 text-lg text-muted leading-relaxed text-pretty">
@@ -125,7 +126,7 @@ get_header(); ?>
       </div>
 
       <!-- Pipeline -->
-      <ol class="mt-14 grid gap-px bg-line rounded-xl overflow-hidden border border-line sm:grid-cols-2 lg:grid-cols-5">
+      <ol class="glow-edge mt-14 grid gap-px bg-line rounded-xl overflow-hidden border border-line sm:grid-cols-2 lg:grid-cols-5">
         <?php
         $stages = [
           ['n' => '01', 'k' => 'brief',    't' => 'Understand', 'd' => 'Goals, users, constraints. The part no model can guess.'],
@@ -161,7 +162,7 @@ get_header(); ?>
       <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
         <div>
           <p class="font-mono text-sm text-violet mb-4">~/ selected-work</p>
-          <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+          <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
             Shipped &amp; live.
           </h2>
         </div>
@@ -170,7 +171,7 @@ get_header(); ?>
 
       <!-- Featured project -->
       <a href="https://successcircles.com" target="_blank" rel="noopener"
-         class="group block relative rounded-xl overflow-hidden border border-line mb-px">
+         class="glow-edge group block relative rounded-xl overflow-hidden border border-line mb-px">
         <div class="image-reveal-box w-full aspect-[16/9] md:aspect-[21/9]">
           <img src="<?php echo esc_url(get_theme_file_uri('/images/Success-Circles.webp')); ?>"
                alt="Success Circles — homepage of an advisory community for established entrepreneurs, dark editorial layout" class="reveal-img object-top" loading="lazy">
@@ -192,7 +193,7 @@ get_header(); ?>
       </a>
 
       <!-- Remaining work as console rows -->
-      <ul class="rounded-b-xl overflow-hidden border-x border-b border-line divide-y divide-line">
+      <ul class="glow-edge rounded-b-xl overflow-hidden border-x border-b border-line divide-y divide-line">
         <?php
         $projects = [
           ['n' => '02', 'name' => 'Precision Aesthetics MD', 'tag' => 'aesthetics',    'url' => 'https://precisionaestheticsmd.com', 'host' => 'precisionaestheticsmd.com', 'desc' => 'A sleek, conversion-focused site for a medical spa with a fast, trustworthy booking experience.'],
@@ -226,7 +227,7 @@ get_header(); ?>
     <div class="max-w-6xl mx-auto">
       <div class="max-w-3xl mb-12">
         <p class="font-mono text-sm text-violet mb-4">~/ stack</p>
-        <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+        <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
           The toolchain.
         </h2>
         <p class="mt-6 text-lg text-muted leading-relaxed text-pretty">
@@ -234,7 +235,7 @@ get_header(); ?>
         </p>
       </div>
 
-      <div class="rounded-xl border border-line overflow-hidden">
+      <div class="glow-edge rounded-xl border border-line overflow-hidden">
         <?php
         $groups = [
           ['k' => 'ai/',          'lime' => true,  'items' => ['Claude', 'ChatGPT', 'Cursor', 'Midjourney', 'Make.com'], 'note' => 'my force multiplier'],
@@ -265,7 +266,7 @@ get_header(); ?>
     <div class="max-w-5xl mx-auto">
       <div class="max-w-3xl mb-16">
         <p class="font-mono text-sm text-violet mb-4">~/ git-log</p>
-        <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+        <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
           Commit history.
         </h2>
       </div>
@@ -409,7 +410,7 @@ get_header(); ?>
               <div class="text-3xl font-semibold text-lime leading-none">5+</div>
               <div class="font-mono text-xs text-muted mt-1">years exp.</div>
             </div>
-            <div class="absolute top-3 left-3 bg-canvas/80 backdrop-blur-sm border border-line px-3 py-1.5 rounded-md font-mono text-xs text-muted">
+            <div class="glass absolute top-3 left-3 px-3 py-1.5 rounded-md font-mono text-xs text-muted">
               📍 remote · worldwide
             </div>
           </div>
@@ -427,7 +428,7 @@ get_header(); ?>
 
         <!-- Bio -->
         <div class="lg:col-span-7 space-y-8">
-          <h2 class="text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance">
+          <h2 class="title-sheen text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance">
             I build clean, fast websites — and I let AI handle the parts that don't need a human.
           </h2>
           <p class="text-lg text-muted leading-relaxed text-pretty">
@@ -445,7 +446,7 @@ get_header(); ?>
               ['t' => 'Clean code',       'd' => 'Scalable &amp; maintainable', 'lime' => true],
             ];
             foreach ($points as $pt) : ?>
-              <div class="flex items-start gap-3 p-4 border border-line rounded-xl bg-surface/40">
+              <div class="glow-edge flex items-start gap-3 p-4 border border-line rounded-xl bg-surface/40">
                 <span class="font-mono text-xs mt-0.5 <?php echo $pt['lime'] ? 'text-lime' : 'text-violet'; ?>">▸</span>
                 <div>
                   <h4 class="font-semibold text-ink"><?php echo $pt['t']; ?></h4>
@@ -469,7 +470,7 @@ get_header(); ?>
     <div class="max-w-6xl mx-auto text-center">
       <p class="font-mono text-sm text-violet mb-6">$ ./contact --start</p>
 
-      <h2 class="text-[clamp(3.5rem,14vw,9rem)] font-semibold leading-[0.86] tracking-[-0.04em] text-balance">
+      <h2 class="title-sheen text-[clamp(3.5rem,14vw,9rem)] font-semibold leading-[0.86] tracking-[-0.04em] text-balance">
         Let's<br><span class="text-lime">ship something.</span>
       </h2>
 
@@ -479,7 +480,7 @@ get_header(); ?>
 
       <div class="mt-10">
         <a href="mailto:fourativisuals@gmail.com"
-           class="group inline-flex items-center gap-3 bg-lime text-lime-ink font-semibold text-lg px-9 py-4.5 rounded-md transition-transform duration-300 hover:-translate-y-0.5">
+           class="btn-lime glow-edge glow-edge--lime group inline-flex items-center gap-3 bg-lime text-lime-ink font-semibold text-lg px-9 py-4.5 rounded-md hover:-translate-y-0.5">
           Start a conversation
           <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
