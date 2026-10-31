@@ -4,12 +4,9 @@ function boilerplate_load_assets() {
   wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), filemtime(get_theme_file_path('/build/index.js')), true);
   wp_enqueue_script('animations', get_theme_file_uri('/build/animations.js'), array(), filemtime(get_theme_file_path('/build/animations.js')), true);
   wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'), array(), filemtime(get_theme_file_path('/build/index.css')));
-  // Primary type system: Geist (display/body) + JetBrains Mono (console chrome).
-  wp_enqueue_style('google-fonts-geist', 'https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap', array(), null);
-  wp_enqueue_style('google-fonts-jetbrains-mono', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap', array(), null);
-  // Legacy fonts retained for blog/single/archive templates that reference them inline.
-  wp_enqueue_style('google-fonts-inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap', array(), null);
-  wp_enqueue_style('google-fonts-outfit', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap', array(), null);
+  // Type system: General Sans (display) + Onest (body) + Geist Mono (labels).
+  wp_enqueue_style('fontshare-general-sans', 'https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap', array(), null);
+  wp_enqueue_style('google-fonts-onest-geist-mono', 'https://fonts.googleapis.com/css2?family=Onest:wght@300..600&family=Geist+Mono:wght@400;500&display=swap', array(), null);
 }
 
 add_action('wp_enqueue_scripts', 'boilerplate_load_assets');
@@ -31,6 +28,10 @@ function boilerplate_add_google_fonts_preconnect($hints, $relation_type) {
             'href' => 'https://fonts.gstatic.com',
             'crossorigin' => 'anonymous',
         ];
+        $hints[] = [
+            'href' => 'https://api.fontshare.com',
+            'crossorigin' => 'anonymous',
+        ];
     }
     return $hints;
 }
@@ -42,11 +43,18 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
-// Flag the front page so the dark "agent console" theme applies only there.
-function portfolio_body_classes( $classes ) {
-    if ( is_front_page() ) {
-        $classes[] = 'home-console';
+// Pill pagination shared by the blog index and archives.
+function portfolio_pagination( $prev_text, $next_text ) {
+    $links = paginate_links( array( 'type' => 'array', 'prev_text' => $prev_text, 'next_text' => $next_text ) );
+    if ( ! $links ) {
+        return;
     }
-    return $classes;
+    echo '<nav class="mt-16 flex justify-center" aria-label="Pagination"><ul class="flex flex-wrap items-center gap-2 font-mono text-xs">';
+    foreach ( $links as $link ) {
+        $classes = strpos( $link, 'current' ) !== false
+            ? 'page-numbers grid place-items-center min-w-10 h-10 px-4 rounded-full bg-ink text-canvas'
+            : 'page-numbers grid place-items-center min-w-10 h-10 px-4 rounded-full border border-line text-muted hover:text-ink hover:border-line-hover transition-colors duration-300';
+        echo '<li>' . str_replace( 'page-numbers', $classes, $link ) . '</li>';
+    }
+    echo '</ul></nav>';
 }
-add_filter( 'body_class', 'portfolio_body_classes' );

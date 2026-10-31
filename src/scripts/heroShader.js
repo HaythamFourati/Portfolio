@@ -16,7 +16,7 @@ uniform vec2 uRes;
 uniform float uTime;
 uniform vec2 uMouse;
 uniform float uEnergy;
-uniform vec3 uBg, uC1, uC2, uC3, uLime;
+uniform vec3 uBg, uC1, uC2, uC3, uWarm, uCool;
 
 vec2 hash2(vec2 p) {
   p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
@@ -93,8 +93,10 @@ void main() {
   float win = 4.0 * tg * (1.0 - tg);
   vec3 col = vec3(ramp(mix(tg, tr, win)).r, ramp(tg).g, ramp(mix(tg, tb, win)).b);
 
-  // Lime only where caustics pile up: the "live signal" catching light.
-  col += uLime * smoothstep(0.55, 1.0, curv) * 0.22;
+  // Studio light: caustics pick up warm cream on the left, cool periwinkle on the right.
+  vec3 tint = mix(uWarm, uCool, smoothstep(-0.7, 0.7, uv.x));
+  col = mix(col, col * tint, 0.55);
+  col += tint * smoothstep(0.5, 1.0, curv) * 0.2;
   col = mix(uBg, col, smoothstep(0.0, 0.16, tg) * 0.9 + 0.1);
   col *= 1.0 - 0.18 * dot(uv, uv);
   // Grain + triangular dither (kills banding on the dark gradient).
@@ -107,11 +109,12 @@ void main() {
 
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
 const PALETTE = {
-  uBg: hex('#0b0b12'),
-  uC1: hex('#17142a'),
-  uC2: hex('#3b2a78'),
-  uC3: hex('#9a6bff'),
-  uLime: hex('#b6f23d'),
+  uBg: hex('#0b0b0b'),
+  uC1: hex('#1c1d20'),
+  uC2: hex('#6a6d74'),
+  uC3: hex('#e8eaef'),
+  uWarm: hex('#feeae1'),
+  uCool: hex('#c0cef2'),
 };
 
 export function initHeroShader(canvas, { still = false } = {}) {

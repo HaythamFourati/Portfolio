@@ -1,124 +1,127 @@
 <?php
 /**
- * The front page template file — AI Agent Console redesign.
+ * The front page template file — Cinematic Mono redesign.
  *
  * @package Haytham-Fourati-Portfolio
  */
 
+$arrow_right = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>';
+$arrow_out   = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 17L17 7M17 7H8M17 7V16"/></svg>';
+
 get_header(); ?>
 
-<div class="bg-canvas text-ink font-display selection:bg-lime selection:text-lime-ink">
+<main class="bg-canvas text-ink">
 
-  <!-- ============== HERO · SPLIT PORTRAIT ============== -->
-  <section id="hero" class="relative min-h-[100svh] flex items-center px-4 pt-28 pb-16 overflow-hidden">
-    <!-- Liquid-glass WebGL field (src/scripts/heroShader.js) + readability scrim -->
-    <canvas class="hero-shader" aria-hidden="true"></canvas>
-    <div class="hero-scrim" aria-hidden="true"></div>
+  <!-- ============== HERO ============== -->
+  <section id="hero" class="relative px-[var(--gutter)] pt-2">
+    <div class="stage min-h-[calc(100svh-5rem)] flex items-center">
+      <!-- Liquid-glass WebGL field (src/scripts/heroShader.js) + readability scrim -->
+      <canvas class="hero-shader" aria-hidden="true"></canvas>
+      <div class="hero-scrim" aria-hidden="true"></div>
 
-    <div class="relative w-full max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="relative w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-10 items-center px-5 sm:px-10 lg:px-14 py-14 lg:py-20">
 
-      <!-- Copy -->
-      <div class="lg:col-span-7 order-2 lg:order-1">
+        <!-- Copy -->
+        <div class="lg:col-span-7 order-2 lg:order-1">
 
-        <!-- Typed prompt -->
-        <p class="glass inline-flex flex-wrap items-baseline gap-x-2 font-mono text-xs sm:text-sm rounded-md px-3 py-2">
-          <span class="text-violet shrink-0">haytham@dev</span><span class="text-faint shrink-0">:~$</span>
-          <span class="text-ink">
-            <span data-typed data-text="ship production sites 10× faster — with AI">ship production sites 10× faster — with AI</span><span class="console-cursor align-middle" data-cursor aria-hidden="true"></span>
-          </span>
-        </p>
+          <!-- Typed prompt -->
+          <p class="glass inline-flex flex-wrap items-baseline gap-x-2 font-mono text-xs sm:text-[0.8rem] rounded-2xl sm:rounded-full px-4 py-2">
+            <span class="text-muted shrink-0">haytham@dev</span><span class="text-faint shrink-0">:~$</span>
+            <span class="text-ink">
+              <span data-typed data-text="ship production sites 10× faster — with AI">ship production sites 10× faster — with AI</span><span class="console-cursor" data-cursor aria-hidden="true"></span>
+            </span>
+          </p>
 
-        <h1 class="mt-8 text-[clamp(3rem,8vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.035em]">
-          <span class="block whitespace-nowrap">Haytham</span>
-          <span class="block whitespace-nowrap">Fourati</span>
-        </h1>
+          <h1 class="mt-8 font-display font-light text-[clamp(3.5rem,9.5vw,8.25rem)] leading-[0.88] tracking-[-0.05em]">
+            <span data-hero-line class="title-sheen block w-fit whitespace-nowrap">Haytham</span>
+            <span data-hero-line class="title-sheen block w-fit whitespace-nowrap">Fourati</span>
+          </h1>
 
-        <p data-hero class="mt-6 text-xl sm:text-2xl text-ink/90 max-w-xl text-pretty">
-          Front-End &amp; WordPress engineer.
-          <span class="inline-flex items-center gap-1.5 font-mono text-sm text-lime align-middle">
-            <span class="w-1.5 h-1.5 rounded-full bg-lime"></span>AI-native
-          </span>
-        </p>
+          <p data-hero class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-xl sm:text-2xl font-normal tracking-[-0.015em] text-ink">
+            Front-End &amp; WordPress engineer.
+            <span class="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-xs text-cream">
+              <span class="w-1.5 h-1.5 rounded-full bg-[image:var(--premium)]"></span>AI-native
+            </span>
+          </p>
 
-        <p data-hero class="mt-4 text-base sm:text-lg text-muted max-w-xl leading-relaxed text-pretty">
-          I pair with AI to ship production-grade websites in a fraction of the time — then bring the
-          architecture, taste, and the final 20% that actually makes it to production.
-        </p>
+          <p data-hero class="mt-4 text-base sm:text-[1.075rem] text-muted max-w-xl leading-relaxed">
+            I pair with AI to ship production-grade websites in a fraction of the time — then bring the
+            architecture, taste, and the final 20% that actually makes it to production.
+          </p>
 
-        <!-- CTAs -->
-        <div data-hero class="mt-9 flex flex-wrap gap-3">
-          <a href="#work" class="btn-lime glow-edge glow-edge--lime group inline-flex items-center gap-2 bg-lime text-lime-ink font-semibold px-6 py-3.5 rounded-md hover:-translate-y-0.5">
-            View the work
-            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="#contact" class="glass glow-edge inline-flex items-center gap-2 hover:border-muted text-ink font-medium px-6 py-3.5 rounded-md transition-colors duration-300">
-            Let's talk
-          </a>
+          <!-- CTAs -->
+          <div data-hero class="mt-10 flex flex-wrap gap-3">
+            <a href="#work" class="btn btn-primary glow-edge glow-edge--warm">
+              View the work <?php echo $arrow_right; ?>
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              Let's talk
+            </a>
+          </div>
         </div>
 
-        <!-- Stats strip -->
-        <dl data-hero class="mt-12 grid grid-cols-3 max-w-lg border-t border-line pt-6 font-mono">
-          <div>
-            <dt class="text-[11px] text-faint uppercase tracking-wider">experience</dt>
-            <dd class="mt-1 text-2xl font-display font-semibold text-ink">5+ yrs</dd>
-          </div>
-          <div>
-            <dt class="text-[11px] text-faint uppercase tracking-wider">focus</dt>
-            <dd class="mt-1 text-2xl font-display font-semibold text-ink">Custom WP</dd>
-          </div>
-          <div>
-            <dt class="text-[11px] text-faint uppercase tracking-wider">speaks</dt>
-            <dd class="mt-1 text-2xl font-display font-semibold text-lime">EN · AR · FR</dd>
-          </div>
-        </dl>
-      </div>
-
-      <!-- Portrait -->
-      <div data-hero class="lg:col-span-5 order-1 lg:order-2 w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none">
-        <figure class="relative">
-          <div class="glow-edge rounded-2xl border border-line bg-surface overflow-hidden shadow-2xl shadow-black/50">
-            <!-- Window bar -->
-            <div class="flex items-center gap-3 px-4 py-2.5 border-b border-line bg-surface-2/80">
-              <span class="flex gap-1.5" aria-hidden="true">
-                <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-lime/80"></span>
-              </span>
-              <span class="font-mono text-[11px] text-faint truncate">~/portfolio/haytham.webp</span>
+        <!-- Portrait -->
+        <div data-hero class="lg:col-span-5 order-1 lg:order-2 w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none lg:pl-6">
+          <figure class="relative">
+            <div class="glow-edge rounded-[var(--radius-stage)] border border-line bg-surface overflow-hidden shadow-[var(--rim),0_40px_100px_-40px_#000]">
+              <!-- Window bar -->
+              <div class="flex items-center gap-3 px-4 py-3 border-b border-line bg-[image:var(--sheen)]">
+                <span class="flex gap-1.5" aria-hidden="true">
+                  <span class="w-2 h-2 rounded-full bg-white/15"></span>
+                  <span class="w-2 h-2 rounded-full bg-white/15"></span>
+                  <span class="w-2 h-2 rounded-full bg-[image:var(--premium)]"></span>
+                </span>
+                <span class="font-mono text-[11px] text-faint truncate">~/portfolio/haytham.webp</span>
+              </div>
+              <img src="<?php echo esc_url(get_theme_file_uri('/images/Warm Professional Office Headshot.webp')); ?>"
+                   alt="Haytham Fourati, front-end developer" width="1122" height="1402"
+                   class="block w-full aspect-[4/5] object-cover object-top" fetchpriority="high">
             </div>
-            <img src="<?php echo esc_url(get_theme_file_uri('/images/Warm Professional Office Headshot.webp')); ?>"
-                 alt="Haytham Fourati, front-end developer" width="1122" height="1402"
-                 class="block w-full aspect-[4/5] object-cover object-top" fetchpriority="high">
-          </div>
 
-          <!-- Floating status chip -->
-          <figcaption class="glass absolute -bottom-5 left-4 sm:-left-6 inline-flex items-center gap-2 rounded-lg px-4 py-3 font-mono text-xs text-muted">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-lime"></span>
+            <!-- Floating status chip -->
+            <figcaption class="glass absolute -bottom-5 left-4 sm:-left-8 inline-flex items-center gap-2.5 rounded-full px-4 py-2.5 font-mono text-xs text-muted">
+              <span class="pip" aria-hidden="true"></span>
+              status: <span class="text-cream">available for hire</span>
+            </figcaption>
+
+            <!-- Floating location chip -->
+            <span class="glass absolute top-16 -right-3 sm:-right-7 rounded-full px-3.5 py-2 font-mono text-[11px] text-muted">
+              📍 remote · worldwide
             </span>
-            status: <span class="text-lime">available for hire</span>
-          </figcaption>
-
-          <!-- Floating location chip -->
-          <span class="glass absolute top-16 -right-3 sm:-right-6 rounded-lg px-3 py-2 font-mono text-[11px] text-muted">
-            📍 remote · worldwide
-          </span>
-        </figure>
+          </figure>
+        </div>
       </div>
     </div>
+
+    <!-- Stats strip -->
+    <dl data-hero class="max-w-7xl mx-auto mt-6 grid grid-cols-3 hairline-grid">
+      <div class="px-4 sm:px-8 py-5">
+        <dt class="font-mono text-[11px] text-faint">experience</dt>
+        <dd class="mt-1.5 font-display text-base sm:text-2xl font-normal tracking-[-0.02em] text-ink">5+ yrs</dd>
+      </div>
+      <div class="px-4 sm:px-8 py-5">
+        <dt class="font-mono text-[11px] text-faint">focus</dt>
+        <dd class="mt-1.5 font-display text-base sm:text-2xl font-normal tracking-[-0.02em] text-ink">Custom WP</dd>
+      </div>
+      <div class="px-4 sm:px-8 py-5">
+        <dt class="font-mono text-[11px] text-faint">speaks</dt>
+        <dd class="mt-1.5 font-display text-base sm:text-2xl font-normal tracking-[-0.02em] text-premium w-fit">EN · AR · FR</dd>
+      </div>
+    </dl>
   </section>
 
   <!-- ============== AI WORKFLOW ============== -->
-  <section id="workflow" class="relative px-4 py-[clamp(5rem,10vw,8rem)] border-t border-line">
-    <div class="max-w-6xl mx-auto">
+  <section id="workflow" class="relative px-[var(--gutter)] pt-[var(--section-gap)]">
+    <div class="max-w-7xl mx-auto">
 
-      <div class="max-w-3xl">
-        <p class="font-mono text-sm text-violet mb-4">~/ how-i-work</p>
-        <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-balance">
-          The AI-native workflow.<br><span class="text-muted">Days of boilerplate become hours.</span>
-        </h2>
-        <p class="mt-6 text-lg text-muted leading-relaxed text-pretty">
+      <div class="grid lg:grid-cols-12 gap-x-10 gap-y-6 items-end">
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-6">~/ how-i-work</p>
+          <h2 class="title-sheen font-display font-light text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.98] tracking-[-0.04em]">
+            The <span class="keep">AI-native</span> workflow.<br><span class="text-faint">Days of boilerplate become hours.</span>
+          </h2>
+        </div>
+        <p class="lg:col-span-5 text-[1.05rem] text-muted leading-relaxed">
           AI is my pair programmer, not my replacement. It clears the busywork — scaffolding, boilerplate,
           first drafts — so I spend my hours on architecture, performance, and the design decisions that
           a recruiter actually notices. <span class="text-ink">The speed is the tooling. The taste is hand-made.</span>
@@ -126,7 +129,7 @@ get_header(); ?>
       </div>
 
       <!-- Pipeline -->
-      <ol class="glow-edge mt-14 grid gap-px bg-line rounded-xl overflow-hidden border border-line sm:grid-cols-2 lg:grid-cols-5">
+      <ol class="glow-edge mt-16 hairline-grid sm:grid-cols-2 lg:grid-cols-5">
         <?php
         $stages = [
           ['n' => '01', 'k' => 'brief',    't' => 'Understand', 'd' => 'Goals, users, constraints. The part no model can guess.'],
@@ -136,64 +139,65 @@ get_header(); ?>
           ['n' => '05', 'k' => 'ship',     't' => 'Ship',       'd' => 'Fast, accessible, on-brand — tested and in production.'],
         ];
         foreach ($stages as $i => $s) :
-          $accent = $i === 3 ? 'text-lime' : 'text-violet';
+          $mine = $i === 0 || $i === 3;
         ?>
-          <li class="group bg-surface/60 p-6 transition-colors duration-300 hover:bg-surface">
-            <div class="flex items-center justify-between mb-5">
-              <span class="font-mono text-xs <?php echo $accent; ?>"><?php echo $s['n']; ?></span>
-              <span class="font-mono text-xs text-faint group-hover:text-muted transition-colors"><?php echo $s['k']; ?>()</span>
+          <li class="group relative p-6 lg:p-7 lg:min-h-[13rem] flex flex-col transition-colors duration-500 hover:!bg-surface-2 <?php echo $mine ? '!bg-[image:var(--aurora),linear-gradient(var(--color-surface),var(--color-surface))]' : ''; ?>">
+            <div class="flex items-center justify-between mb-6 lg:mb-10">
+              <span class="font-mono text-xs <?php echo $mine ? 'text-premium' : 'text-faint'; ?>"><?php echo $s['n']; ?></span>
+              <span class="font-mono text-[11px] text-faint group-hover:text-muted transition-colors"><?php echo $s['k']; ?>()</span>
             </div>
-            <h3 class="text-lg font-semibold text-ink mb-2"><?php echo $s['t']; ?></h3>
-            <p class="text-sm text-muted leading-relaxed text-pretty"><?php echo $s['d']; ?></p>
+            <h3 class="mt-auto font-display text-[1.35rem] font-normal tracking-[-0.02em] text-ink mb-2"><?php echo $s['t']; ?></h3>
+            <p class="text-sm text-muted leading-relaxed"><?php echo $s['d']; ?></p>
           </li>
         <?php endforeach; ?>
       </ol>
 
       <p class="mt-6 font-mono text-xs text-faint">
-        <span class="text-lime">▸</span> stages 01 &amp; 04 are where I live — the model owns the typing, I own the judgment.
+        <span class="text-cream">▸</span> stages 01 &amp; 04 are where I live — the model owns the typing, I own the judgment.
       </p>
     </div>
   </section>
 
   <!-- ============== SELECTED WORK ============== -->
-  <section id="work" class="relative px-4 py-[clamp(5rem,10vw,8rem)] border-t border-line">
-    <div class="max-w-6xl mx-auto">
+  <section id="work" class="relative px-[var(--gutter)] pt-[var(--section-gap)]">
+    <div class="max-w-7xl mx-auto">
 
-      <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
         <div>
-          <p class="font-mono text-sm text-violet mb-4">~/ selected-work</p>
-          <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+          <p class="eyebrow mb-6">~/ selected-work</p>
+          <h2 class="title-sheen font-display font-light text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.98] tracking-[-0.04em]">
             Shipped &amp; live.
           </h2>
         </div>
-        <p class="font-mono text-sm text-faint">$ ls selected-work/ <span class="text-muted">— 7 results</span></p>
+        <p class="font-mono text-xs text-faint">$ ls selected-work/ <span class="text-muted">— 7 results</span></p>
       </div>
 
       <!-- Featured project -->
       <a href="https://successcircles.com" target="_blank" rel="noopener"
-         class="glow-edge group block relative rounded-xl overflow-hidden border border-line mb-px">
-        <div class="image-reveal-box w-full aspect-[16/9] md:aspect-[21/9]">
+         class="glow-edge group block relative rounded-[var(--radius-stage)] overflow-hidden border border-line">
+        <div class="image-reveal-box w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9]">
           <img src="<?php echo esc_url(get_theme_file_uri('/images/Success-Circles.webp')); ?>"
                alt="Success Circles — homepage of an advisory community for established entrepreneurs, dark editorial layout" class="reveal-img object-top" loading="lazy">
           <div class="uncover"><div class="uncover_slice"></div><div class="uncover_slice"></div><div class="uncover_slice"></div></div>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/40 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-          <div class="flex items-center gap-3 font-mono text-xs text-faint mb-2">
-            <span class="text-lime">[ featured ]</span>
-            <span>coaching / community</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-canvas from-15% via-canvas/85 via-50% to-canvas/25 transition-opacity duration-700 group-hover:opacity-80"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <div class="flex items-center gap-3 font-mono text-[11px] text-faint mb-4">
+              <span class="glass rounded-full px-3 py-1 text-cream">[ featured ]</span>
+              <span>coaching / community</span>
+            </div>
+            <h3 class="font-display text-3xl sm:text-5xl font-light tracking-[-0.035em] text-ink mb-2">Success Circles</h3>
+            <p class="text-muted max-w-xl">An advisory community for established entrepreneurs — editorial design built to turn visitors into members.</p>
           </div>
-          <h3 class="text-2xl sm:text-3xl font-semibold text-ink mb-1">Success Circles</h3>
-          <p class="text-muted max-w-xl text-pretty">An advisory community for established entrepreneurs — editorial design built to turn visitors into members.</p>
-          <span class="mt-4 inline-flex items-center gap-2 font-mono text-sm text-lime">
-            successcircles.com
-            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          <span class="btn btn-primary">
+            successcircles.com <?php echo $arrow_out; ?>
           </span>
         </div>
       </a>
 
-      <!-- Remaining work as console rows -->
-      <ul class="glow-edge rounded-b-xl overflow-hidden border-x border-b border-line divide-y divide-line">
+      <!-- Remaining work -->
+      <ul class="glow-edge mt-4 panel overflow-hidden divide-y divide-line">
         <?php
         $projects = [
           ['n' => '02', 'name' => 'Precision Aesthetics MD', 'tag' => 'aesthetics',    'url' => 'https://precisionaestheticsmd.com', 'host' => 'precisionaestheticsmd.com', 'desc' => 'A sleek, conversion-focused site for a medical spa with a fast, trustworthy booking experience.'],
@@ -206,15 +210,15 @@ get_header(); ?>
         foreach ($projects as $p) : ?>
           <li>
             <a href="<?php echo esc_url($p['url']); ?>" target="_blank" rel="noopener"
-               class="work-row flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-5 group">
-              <span class="font-mono text-xs text-faint w-6 shrink-0"><?php echo $p['n']; ?></span>
+               class="work-row flex items-center gap-4 sm:gap-8 px-5 sm:px-8 py-6">
+              <span class="font-mono text-[11px] text-faint w-6 shrink-0"><?php echo $p['n']; ?></span>
               <span class="min-w-0 flex-1">
-                <span class="block text-lg font-semibold text-ink group-hover:text-lime transition-colors"><?php echo $p['name']; ?></span>
-                <span class="block text-sm text-muted truncate text-pretty"><?php echo $p['desc']; ?></span>
+                <span class="block font-display text-xl sm:text-2xl font-normal tracking-[-0.02em] text-ink"><?php echo $p['name']; ?></span>
+                <span class="block mt-1 text-sm text-muted truncate"><?php echo $p['desc']; ?></span>
               </span>
-              <span class="hidden md:inline font-mono text-xs text-faint shrink-0"><?php echo $p['tag']; ?></span>
-              <span class="hidden lg:inline font-mono text-xs text-muted shrink-0 w-48 text-right truncate"><?php echo $p['host']; ?></span>
-              <svg class="w-4 h-4 text-faint group-hover:text-lime group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+              <span class="hidden md:inline-flex rounded-full border border-line px-3 py-1 font-mono text-[11px] text-faint shrink-0"><?php echo $p['tag']; ?></span>
+              <span class="hidden lg:inline font-mono text-xs text-muted shrink-0 w-52 text-right truncate"><?php echo $p['host']; ?></span>
+              <span class="work-arrow grid place-items-center w-10 h-10 rounded-full border border-line text-faint shrink-0"><?php echo $arrow_right; ?></span>
             </a>
           </li>
         <?php endforeach; ?>
@@ -223,36 +227,38 @@ get_header(); ?>
   </section>
 
   <!-- ============== STACK MANIFEST ============== -->
-  <section id="stack" class="relative px-4 py-[clamp(5rem,10vw,8rem)] border-t border-line">
-    <div class="max-w-6xl mx-auto">
-      <div class="max-w-3xl mb-12">
-        <p class="font-mono text-sm text-violet mb-4">~/ stack</p>
-        <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
-          The toolchain.
-        </h2>
-        <p class="mt-6 text-lg text-muted leading-relaxed text-pretty">
+  <section id="stack" class="relative px-[var(--gutter)] pt-[var(--section-gap)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-x-10 gap-y-6 items-end mb-14">
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-6">~/ stack</p>
+          <h2 class="title-sheen font-display font-light text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.98] tracking-[-0.04em]">
+            The toolchain.
+          </h2>
+        </div>
+        <p class="lg:col-span-5 text-[1.05rem] text-muted leading-relaxed">
           A modern WordPress &amp; front-end stack, accelerated by an AI layer I drive every day.
         </p>
       </div>
 
-      <div class="glow-edge rounded-xl border border-line overflow-hidden">
+      <div class="glow-edge hairline-grid">
         <?php
         $groups = [
-          ['k' => 'ai/',          'lime' => true,  'items' => ['Claude', 'ChatGPT', 'Cursor', 'Midjourney', 'Make.com'], 'note' => 'my force multiplier'],
-          ['k' => 'wordpress/',   'lime' => false, 'items' => ['Custom Themes', 'Elementor', 'UX Builder', 'ACF', 'GitHub'], 'note' => ''],
-          ['k' => 'frontend/',    'lime' => false, 'items' => ['React', 'Tailwind CSS', 'GSAP', 'JavaScript', 'HTML / CSS'], 'note' => ''],
-          ['k' => 'performance/', 'lime' => false, 'items' => ['Core Web Vitals', 'Yoast SEO', 'Rank Math', 'PageSpeed'], 'note' => ''],
-          ['k' => 'ops & security/', 'lime' => false, 'items' => ['SiteGround', 'InMotion', 'Hostinger', 'Wordfence', 'Sucuri', 'SSL'], 'note' => ''],
+          ['k' => 'ai/',          'hi' => true,  'items' => ['Claude', 'ChatGPT', 'Cursor', 'Midjourney', 'Make.com'], 'note' => 'my force multiplier'],
+          ['k' => 'wordpress/',   'hi' => false, 'items' => ['Custom Themes', 'Elementor', 'UX Builder', 'ACF', 'GitHub'], 'note' => ''],
+          ['k' => 'frontend/',    'hi' => false, 'items' => ['React', 'Tailwind CSS', 'GSAP', 'JavaScript', 'HTML / CSS'], 'note' => ''],
+          ['k' => 'performance/', 'hi' => false, 'items' => ['Core Web Vitals', 'Yoast SEO', 'Rank Math', 'PageSpeed'], 'note' => ''],
+          ['k' => 'ops & security/', 'hi' => false, 'items' => ['SiteGround', 'InMotion', 'Hostinger', 'Wordfence', 'Sucuri', 'SSL'], 'note' => ''],
         ];
-        foreach ($groups as $i => $g) : ?>
-          <div class="grid sm:grid-cols-[200px_1fr] gap-x-6 gap-y-3 px-5 sm:px-7 py-6 <?php echo $i ? 'border-t border-line' : ''; ?> <?php echo $g['lime'] ? 'bg-lime/[0.04]' : 'bg-surface/40'; ?>">
-            <div class="flex items-baseline gap-2">
-              <span class="font-mono text-base font-medium <?php echo $g['lime'] ? 'text-lime' : 'text-ink'; ?>"><?php echo $g['k']; ?></span>
-              <?php if ($g['note']) : ?><span class="font-mono text-xs text-faint hidden sm:inline">// <?php echo $g['note']; ?></span><?php endif; ?>
+        foreach ($groups as $g) : ?>
+          <div class="grid sm:grid-cols-[240px_1fr] gap-x-8 gap-y-4 px-6 sm:px-8 py-7 <?php echo $g['hi'] ? '!bg-[image:var(--aurora),linear-gradient(var(--color-surface),var(--color-surface))]' : ''; ?>">
+            <div class="flex flex-col gap-1">
+              <span class="font-mono text-sm <?php echo $g['hi'] ? 'text-premium w-fit' : 'text-ink'; ?>"><?php echo $g['k']; ?></span>
+              <?php if ($g['note']) : ?><span class="font-mono text-[11px] text-faint">// <?php echo $g['note']; ?></span><?php endif; ?>
             </div>
             <ul class="flex flex-wrap gap-2">
               <?php foreach ($g['items'] as $item) : ?>
-                <li class="font-mono text-sm px-3 py-1.5 rounded-md border <?php echo $g['lime'] ? 'border-lime/30 text-lime bg-lime/[0.06]' : 'border-line text-muted bg-surface-2/50'; ?>"><?php echo $item; ?></li>
+                <li class="rounded-full border px-3.5 py-1.5 text-sm <?php echo $g['hi'] ? 'border-cream/25 text-cream bg-cream/[0.04] shadow-[inset_0_1px_0_0_#feeae11a]' : 'border-line text-muted bg-white/[0.02]'; ?>"><?php echo $item; ?></li>
               <?php endforeach; ?>
             </ul>
           </div>
@@ -262,29 +268,29 @@ get_header(); ?>
   </section>
 
   <!-- ============== EXPERIENCE TIMELINE ============== -->
-  <section id="experience" class="relative px-4 py-[clamp(5rem,10vw,8rem)] border-t border-line">
+  <section id="experience" class="relative px-[var(--gutter)] pt-[var(--section-gap)]">
     <div class="max-w-5xl mx-auto">
-      <div class="max-w-3xl mb-16">
-        <p class="font-mono text-sm text-violet mb-4">~/ git-log</p>
-        <h2 class="title-sheen text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+      <div class="text-center mb-28">
+        <p class="eyebrow justify-center mb-6">~/ git-log</p>
+        <h2 class="title-sheen font-display font-light text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.98] tracking-[-0.04em]">
           Commit history.
         </h2>
       </div>
 
       <div class="timeline-container relative">
         <div class="timeline-line absolute left-2 md:left-1/2 top-0 bottom-0 w-px bg-line md:-translate-x-1/2">
-          <div class="timeline-progress absolute top-0 left-0 w-full bg-lime" style="height:0%;"></div>
+          <div class="timeline-progress absolute top-0 left-0 w-full bg-gradient-to-b from-cream via-platinum to-peri shadow-[0_0_12px_#feeae166]" style="height:0%;"></div>
         </div>
 
-        <div class="space-y-14 md:space-y-24">
+        <div class="space-y-16 md:space-y-28">
 
           <!-- 1 · current -->
           <div class="timeline-item relative flex flex-col md:flex-row md:items-center">
             <div class="hidden md:block md:w-1/2 md:pr-16 md:text-right">
               <div class="timeline-content">
-                <span class="inline-block font-mono text-xs text-lime mb-3">● HEAD · current</span>
-                <h3 class="text-2xl font-semibold text-ink mb-1">WordPress Developer</h3>
-                <p class="font-mono text-sm text-violet mb-1">Local Vocal Marketing</p>
+                <span class="inline-block font-mono text-[11px] text-cream mb-3">● HEAD · current</span>
+                <h3 class="font-display text-[1.75rem] font-normal tracking-[-0.025em] text-ink mb-1">WordPress Developer</h3>
+                <p class="font-mono text-xs text-muted mb-1">Local Vocal Marketing</p>
                 <p class="text-sm text-faint mb-4">Baltimore County, Maryland</p>
                 <ul class="text-sm text-muted space-y-1.5">
                   <li>Built &amp; maintained WordPress sites on the Flatsome theme</li>
@@ -293,17 +299,15 @@ get_header(); ?>
                 </ul>
               </div>
             </div>
-            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-4 h-4 bg-lime rounded-full ring-4 ring-canvas z-10">
-              <div class="absolute -top-1 -left-1 w-6 h-6 bg-lime/30 rounded-full animate-ping"></div>
-            </div>
+            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-cream rounded-full ring-4 ring-canvas shadow-[0_0_16px_#feeae1aa] z-10"></div>
             <div class="timeline-year absolute left-6 md:left-1/2 md:-translate-x-1/2 -top-9 md:-top-11">
-              <span class="font-mono text-xs bg-lime text-lime-ink font-semibold px-3 py-1.5 rounded-md">2019 — present</span>
+              <span class="font-mono text-[11px] bg-cream text-canvas font-medium px-3 py-1.5 rounded-full whitespace-nowrap">2019 — present</span>
             </div>
             <div class="md:w-1/2 md:pl-16 pl-10">
               <div class="timeline-content md:hidden">
-                <span class="inline-block font-mono text-xs text-lime mb-3">● HEAD · current</span>
-                <h3 class="text-xl font-semibold text-ink mb-1">WordPress Developer</h3>
-                <p class="font-mono text-sm text-violet mb-1">Local Vocal Marketing</p>
+                <span class="inline-block font-mono text-[11px] text-cream mb-3">● HEAD · current</span>
+                <h3 class="font-display text-2xl font-normal tracking-[-0.025em] text-ink mb-1">WordPress Developer</h3>
+                <p class="font-mono text-xs text-muted mb-1">Local Vocal Marketing</p>
                 <p class="text-sm text-faint mb-3">Baltimore County, Maryland</p>
                 <ul class="text-sm text-muted space-y-1">
                   <li>Built &amp; maintained WordPress sites</li>
@@ -317,14 +321,14 @@ get_header(); ?>
           <!-- 2 -->
           <div class="timeline-item relative flex flex-col md:flex-row md:items-center">
             <div class="hidden md:block md:w-1/2 md:pr-16"></div>
-            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-4 h-4 bg-line rounded-full ring-4 ring-canvas z-10 transition-colors duration-500"></div>
+            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#2a2a2a] rounded-full ring-4 ring-canvas z-10"></div>
             <div class="timeline-year absolute left-6 md:left-1/2 md:-translate-x-1/2 -top-9 md:-top-11">
-              <span class="font-mono text-xs bg-surface-2 text-muted px-3 py-1.5 rounded-md transition-colors duration-500">2019 — 2022</span>
+              <span class="font-mono text-[11px] bg-surface-2 border border-line text-muted px-3 py-1.5 rounded-full whitespace-nowrap">2019 — 2022</span>
             </div>
             <div class="md:w-1/2 md:pl-16 pl-10">
               <div class="timeline-content">
-                <h3 class="text-xl md:text-2xl font-semibold text-ink mb-1">WordPress Expert</h3>
-                <p class="font-mono text-sm text-violet mb-3">Fiverr · Freelance</p>
+                <h3 class="font-display text-2xl md:text-[1.75rem] font-normal tracking-[-0.025em] text-ink mb-1">WordPress Expert</h3>
+                <p class="font-mono text-xs text-muted mb-3">Fiverr · Freelance</p>
                 <ul class="text-sm text-muted space-y-1.5">
                   <li>Designed &amp; built custom WordPress websites</li>
                   <li>Optimized for speed, SEO &amp; performance</li>
@@ -339,8 +343,8 @@ get_header(); ?>
           <div class="timeline-item relative flex flex-col md:flex-row md:items-center">
             <div class="hidden md:block md:w-1/2 md:pr-16 md:text-right">
               <div class="timeline-content">
-                <h3 class="text-2xl font-semibold text-ink mb-1">WordPress Developer</h3>
-                <p class="font-mono text-sm text-violet mb-1">POLYSERVICE</p>
+                <h3 class="font-display text-[1.75rem] font-normal tracking-[-0.025em] text-ink mb-1">WordPress Developer</h3>
+                <p class="font-mono text-xs text-muted mb-1">POLYSERVICE</p>
                 <p class="text-sm text-faint mb-4">Tunis, Tunisia</p>
                 <ul class="text-sm text-muted space-y-1.5">
                   <li>Developed &amp; maintained business websites</li>
@@ -349,14 +353,14 @@ get_header(); ?>
                 </ul>
               </div>
             </div>
-            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-4 h-4 bg-line rounded-full ring-4 ring-canvas z-10 transition-colors duration-500"></div>
+            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#2a2a2a] rounded-full ring-4 ring-canvas z-10"></div>
             <div class="timeline-year absolute left-6 md:left-1/2 md:-translate-x-1/2 -top-9 md:-top-11">
-              <span class="font-mono text-xs bg-surface-2 text-muted px-3 py-1.5 rounded-md transition-colors duration-500">2018 — 2019</span>
+              <span class="font-mono text-[11px] bg-surface-2 border border-line text-muted px-3 py-1.5 rounded-full whitespace-nowrap">2018 — 2019</span>
             </div>
             <div class="md:w-1/2 md:pl-16 pl-10">
               <div class="timeline-content md:hidden">
-                <h3 class="text-xl font-semibold text-ink mb-1">WordPress Developer</h3>
-                <p class="font-mono text-sm text-violet mb-1">POLYSERVICE</p>
+                <h3 class="font-display text-2xl font-normal tracking-[-0.025em] text-ink mb-1">WordPress Developer</h3>
+                <p class="font-mono text-xs text-muted mb-1">POLYSERVICE</p>
                 <p class="text-sm text-faint mb-3">Tunis, Tunisia</p>
                 <ul class="text-sm text-muted space-y-1">
                   <li>Developed business websites</li>
@@ -370,14 +374,14 @@ get_header(); ?>
           <!-- 4 -->
           <div class="timeline-item relative flex flex-col md:flex-row md:items-center">
             <div class="hidden md:block md:w-1/2 md:pr-16"></div>
-            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-4 h-4 bg-line rounded-full ring-4 ring-canvas z-10 transition-colors duration-500"></div>
+            <div class="timeline-node absolute left-2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#2a2a2a] rounded-full ring-4 ring-canvas z-10"></div>
             <div class="timeline-year absolute left-6 md:left-1/2 md:-translate-x-1/2 -top-9 md:-top-11">
-              <span class="font-mono text-xs bg-surface-2 text-muted px-3 py-1.5 rounded-md transition-colors duration-500">2016 — 2018</span>
+              <span class="font-mono text-[11px] bg-surface-2 border border-line text-muted px-3 py-1.5 rounded-full whitespace-nowrap">2016 — 2018</span>
             </div>
             <div class="md:w-1/2 md:pl-16 pl-10">
               <div class="timeline-content">
-                <h3 class="text-xl md:text-2xl font-semibold text-ink mb-1">Data Entry Operator</h3>
-                <p class="font-mono text-sm text-violet mb-3">Online Review Machine</p>
+                <h3 class="font-display text-2xl md:text-[1.75rem] font-normal tracking-[-0.025em] text-ink mb-1">Data Entry Operator</h3>
+                <p class="font-mono text-xs text-muted mb-3">Online Review Machine</p>
                 <ul class="text-sm text-muted space-y-1.5">
                   <li>Assisted with online review management</li>
                   <li>Provided customer support</li>
@@ -393,45 +397,45 @@ get_header(); ?>
   </section>
 
   <!-- ============== ABOUT ============== -->
-  <section id="about" class="relative px-4 py-[clamp(5rem,10vw,8rem)] border-t border-line">
-    <div class="max-w-6xl mx-auto">
-      <p class="font-mono text-sm text-violet mb-4">~/ whoami</p>
+  <section id="about" class="relative px-[var(--gutter)] pt-[var(--section-gap)]">
+    <div class="max-w-7xl mx-auto">
+      <p class="eyebrow mb-10">~/ whoami</p>
 
-      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
         <!-- Image + languages -->
-        <div class="lg:col-span-5 space-y-8">
+        <div class="lg:col-span-5 space-y-10">
           <div class="relative">
-            <div class="rounded-xl overflow-hidden border border-line">
+            <div class="glow-edge rounded-[var(--radius-stage)] overflow-hidden border border-line">
               <img src="<?php echo esc_url(get_theme_file_uri('/images/profile-picture-number2.jpg')); ?>"
                    alt="Haytham Fourati, front-end developer" class="w-full h-auto" loading="lazy">
             </div>
-            <div class="absolute -bottom-5 -right-3 sm:-right-5 bg-surface border border-line p-4 rounded-xl">
-              <div class="text-3xl font-semibold text-lime leading-none">5+</div>
-              <div class="font-mono text-xs text-muted mt-1">years exp.</div>
+            <div class="glass absolute -bottom-6 -right-3 sm:-right-6 px-5 py-4 rounded-[var(--radius-card)]">
+              <div class="font-display text-4xl font-light tracking-[-0.04em] text-premium leading-none">5+</div>
+              <div class="font-mono text-[11px] text-muted mt-1.5">years exp.</div>
             </div>
-            <div class="glass absolute top-3 left-3 px-3 py-1.5 rounded-md font-mono text-xs text-muted">
+            <div class="glass absolute top-4 left-4 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-muted">
               📍 remote · worldwide
             </div>
           </div>
 
-          <div class="border border-line rounded-xl p-6 bg-surface/40">
-            <h3 class="font-mono text-sm text-faint mb-4">// languages</h3>
-            <ul class="flex flex-wrap gap-2.5">
-              <li class="flex items-center gap-2 bg-surface-2/60 border border-line px-3 py-1.5 rounded-md text-sm"><span>🇺🇸</span> English <span class="font-mono text-xs text-lime">fluent</span></li>
-              <li class="flex items-center gap-2 bg-surface-2/60 border border-line px-3 py-1.5 rounded-md text-sm"><span>🇹🇳</span> Arabic <span class="font-mono text-xs text-lime">native</span></li>
-              <li class="flex items-center gap-2 bg-surface-2/60 border border-line px-3 py-1.5 rounded-md text-sm"><span>🇫🇷</span> French <span class="font-mono text-xs text-violet">good</span></li>
-              <li class="flex items-center gap-2 bg-surface-2/60 border border-line px-3 py-1.5 rounded-md text-sm"><span>🇩🇪</span> German <span class="font-mono text-xs text-faint">learning</span></li>
+          <div class="panel p-6">
+            <h3 class="font-mono text-xs text-faint mb-4">// languages</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="flex items-center gap-2 border border-line bg-white/[0.02] px-3.5 py-1.5 rounded-full text-sm"><span>🇺🇸</span> English <span class="font-mono text-[11px] text-cream">fluent</span></li>
+              <li class="flex items-center gap-2 border border-line bg-white/[0.02] px-3.5 py-1.5 rounded-full text-sm"><span>🇹🇳</span> Arabic <span class="font-mono text-[11px] text-cream">native</span></li>
+              <li class="flex items-center gap-2 border border-line bg-white/[0.02] px-3.5 py-1.5 rounded-full text-sm"><span>🇫🇷</span> French <span class="font-mono text-[11px] text-peri">good</span></li>
+              <li class="flex items-center gap-2 border border-line bg-white/[0.02] px-3.5 py-1.5 rounded-full text-sm"><span>🇩🇪</span> German <span class="font-mono text-[11px] text-faint">learning</span></li>
             </ul>
           </div>
         </div>
 
         <!-- Bio -->
-        <div class="lg:col-span-7 space-y-8">
-          <h2 class="title-sheen text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance">
+        <div class="lg:col-span-7 space-y-8 lg:pt-4">
+          <h2 class="title-sheen font-display font-light text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.04] tracking-[-0.035em]">
             I build clean, fast websites — and I let AI handle the parts that don't need a human.
           </h2>
-          <p class="text-lg text-muted leading-relaxed text-pretty">
+          <p class="text-[1.075rem] text-muted leading-relaxed">
             I'm a front-end WordPress developer focused on custom theme development — blending elegant design
             with performance and usability. AI is woven into how I work: it drafts, I direct. That means more
             iterations, faster delivery, and more time spent on the decisions that make a site genuinely good.
@@ -440,25 +444,25 @@ get_header(); ?>
           <div class="grid sm:grid-cols-2 gap-3">
             <?php
             $points = [
-              ['t' => 'Fast & optimized', 'd' => 'SEO-friendly, lightning-fast builds', 'lime' => true],
-              ['t' => 'AI-augmented',     'd' => 'More shipped, in less time', 'lime' => false],
-              ['t' => 'Clear comms',      'd' => 'Built for long-term partnerships', 'lime' => false],
-              ['t' => 'Clean code',       'd' => 'Scalable &amp; maintainable', 'lime' => true],
+              ['t' => 'Fast & optimized', 'd' => 'SEO-friendly, lightning-fast builds', 'hi' => true],
+              ['t' => 'AI-augmented',     'd' => 'More shipped, in less time', 'hi' => false],
+              ['t' => 'Clear comms',      'd' => 'Built for long-term partnerships', 'hi' => false],
+              ['t' => 'Clean code',       'd' => 'Scalable &amp; maintainable', 'hi' => true],
             ];
             foreach ($points as $pt) : ?>
-              <div class="glow-edge flex items-start gap-3 p-4 border border-line rounded-xl bg-surface/40">
-                <span class="font-mono text-xs mt-0.5 <?php echo $pt['lime'] ? 'text-lime' : 'text-violet'; ?>">▸</span>
+              <div class="glow-edge panel flex items-start gap-3 p-5">
+                <span class="font-mono text-xs mt-1 <?php echo $pt['hi'] ? 'text-cream' : 'text-peri'; ?>">▸</span>
                 <div>
-                  <h4 class="font-semibold text-ink"><?php echo $pt['t']; ?></h4>
-                  <p class="text-sm text-muted"><?php echo $pt['d']; ?></p>
+                  <h4 class="font-display text-[1.1rem] font-normal tracking-[-0.015em] text-ink"><?php echo $pt['t']; ?></h4>
+                  <p class="text-sm text-muted mt-0.5"><?php echo $pt['d']; ?></p>
                 </div>
               </div>
             <?php endforeach; ?>
           </div>
 
-          <div class="flex items-center gap-4 p-4 border border-line rounded-xl bg-surface/40">
+          <div class="panel flex items-center gap-4 p-5">
             <span class="text-2xl">☕</span>
-            <p class="text-muted text-pretty"><span class="text-ink font-medium">Fun fact:</span> I might be quiet in meetings, but I deliver loud results.</p>
+            <p class="text-muted"><span class="text-ink font-medium">Fun fact:</span> I might be quiet in meetings, but I deliver loud results.</p>
           </div>
         </div>
       </div>
@@ -466,53 +470,49 @@ get_header(); ?>
   </section>
 
   <!-- ============== CONTACT ============== -->
-  <section id="contact" class="relative px-4 py-[clamp(6rem,12vw,10rem)] border-t border-line overflow-hidden">
-    <div class="max-w-6xl mx-auto text-center">
-      <p class="font-mono text-sm text-violet mb-6">$ ./contact --start</p>
+  <section id="contact" class="relative px-[var(--gutter)] pt-[var(--section-gap)]">
+    <div class="stage max-w-7xl mx-auto text-center px-6 py-[clamp(5rem,11vw,9rem)]">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_62%_at_50%_50%,#060606b3_0%,#06060640_50%,transparent_80%)]" aria-hidden="true"></div>
+      <p class="eyebrow mb-8 justify-center">$ ./contact --start</p>
 
-      <h2 class="title-sheen text-[clamp(3.5rem,14vw,9rem)] font-semibold leading-[0.86] tracking-[-0.04em] text-balance">
-        Let's<br><span class="text-lime">ship something.</span>
+      <h2 class="title-sheen font-display font-light text-[clamp(3.5rem,13vw,10rem)] leading-[0.86] tracking-[-0.055em]">
+        Let's<br><span class="text-premium">ship something.</span>
       </h2>
 
-      <p class="mt-8 text-xl text-muted max-w-xl mx-auto text-pretty">
+      <p class="mt-10 text-lg sm:text-xl text-muted max-w-xl mx-auto">
         Have a project in mind, or a role to fill? I'd love to hear about it.
       </p>
 
       <div class="mt-10">
-        <a href="mailto:fourativisuals@gmail.com"
-           class="btn-lime glow-edge glow-edge--lime group inline-flex items-center gap-3 bg-lime text-lime-ink font-semibold text-lg px-9 py-4.5 rounded-md hover:-translate-y-0.5">
-          Start a conversation
-          <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        <a href="mailto:fourativisuals@gmail.com" class="btn btn-primary btn-lg glow-edge glow-edge--warm">
+          Start a conversation <?php echo $arrow_right; ?>
         </a>
       </div>
 
-      <div class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-sm">
-        <a href="mailto:fourativisuals@gmail.com" class="inline-flex items-center gap-2 text-muted hover:text-lime transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-xs">
+        <a href="mailto:fourativisuals@gmail.com" class="nav-link inline-flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           fourativisuals@gmail.com
         </a>
-        <a href="https://www.linkedin.com/in/haytham-fourati-983157180/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-muted hover:text-lime transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/in/haytham-fourati-983157180/" target="_blank" rel="noopener" class="nav-link inline-flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
-        <a href="https://github.com/HaythamFourati" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-muted hover:text-lime transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <a href="https://github.com/HaythamFourati" target="_blank" rel="noopener" class="nav-link inline-flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           GitHub
         </a>
       </div>
 
       <div class="mt-12">
-        <span class="inline-flex items-center gap-2 border border-line rounded-full px-4 py-2 font-mono text-xs text-muted">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-lime"></span>
-          </span>
+        <span class="inline-flex items-center gap-2.5 border border-line rounded-full px-4 py-2 font-mono text-[11px] text-muted bg-white/[0.02]">
+          <span class="pip" aria-hidden="true"></span>
           available for new projects
         </span>
       </div>
     </div>
   </section>
 
-</div>
+</main>
 
 <?php get_footer(); ?>
