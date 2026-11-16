@@ -58,3 +58,48 @@ function portfolio_pagination( $prev_text, $next_text ) {
     }
     echo '</ul></nav>';
 }
+
+// Front-page SEO: a real title, description, link-preview card and Person schema,
+// so a search for the name or a pasted link shows who this is.
+// ponytail: front page only, no SEO plugin installed — swap for Yoast/Rank Math if one is added.
+function portfolio_front_title( $title ) {
+    return is_front_page() ? 'Haytham Fourati — Front-End & WordPress Engineer' : $title;
+}
+add_filter( 'pre_get_document_title', 'portfolio_front_title' );
+
+function portfolio_front_meta() {
+    if ( ! is_front_page() ) {
+        return;
+    }
+    $title = 'Haytham Fourati — Front-End & WordPress Engineer';
+    $desc  = 'AI-native front-end and WordPress engineer. Custom themes, fast and accessible builds, local SEO. 5+ years shipping production sites. Available for hire.';
+    $url   = home_url( '/' );
+    $image = get_theme_file_uri( '/images/headshot-studio.webp' );
+    printf( '<meta name="description" content="%s">' . "\n", esc_attr( $desc ) );
+    printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $url ) );
+    foreach ( array(
+        'og:type'        => 'profile',
+        'og:title'       => $title,
+        'og:description' => $desc,
+        'og:url'         => $url,
+        'og:image'       => $image,
+    ) as $property => $content ) {
+        printf( '<meta property="%s" content="%s">' . "\n", esc_attr( $property ), esc_attr( $content ) );
+    }
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    $person = array(
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Person',
+        'name'        => 'Haytham Fourati',
+        'jobTitle'    => 'Front-End & WordPress Engineer',
+        'url'         => $url,
+        'image'       => $image,
+        'email'       => 'mailto:fourativisuals@gmail.com',
+        'knowsLanguage' => array( 'English', 'Arabic', 'French' ),
+        'knowsAbout'  => array( 'WordPress', 'Custom WordPress themes', 'Front-end development', 'React', 'Tailwind CSS', 'GSAP', 'Technical SEO', 'Core Web Vitals' ),
+        'worksFor'    => array( '@type' => 'Organization', 'name' => 'Local Vocal Marketing', 'url' => 'https://localvocalmarketing.com/' ),
+        'sameAs'      => array( 'https://www.linkedin.com/in/haytham-fourati-983157180/', 'https://github.com/HaythamFourati' ),
+    );
+    echo '<script type="application/ld+json">' . wp_json_encode( $person, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 'portfolio_front_meta', 1 );

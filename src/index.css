@@ -31,6 +31,7 @@
   --radius-panel: 10px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 :root {
@@ -80,7 +81,7 @@ p { text-wrap: pretty; }
 .nav-link {
   position: relative;
   color: var(--color-muted);
-  transition: color 0.3s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 .nav-link:hover, .nav-link:focus-visible { color: var(--color-ink); }
 
@@ -152,9 +153,11 @@ p { text-wrap: pretty; }
   border: 1px solid var(--color-line);
   background: var(--sheen), var(--color-surface);
   box-shadow: var(--rim);
-  transition: border-color 0.4s ease, background-color 0.4s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
-.panel:hover { border-color: var(--color-line-hover); }
+@media (hover: hover) and (pointer: fine) {
+  .panel:hover { border-color: var(--color-line-hover); }
+}
 
 /* Glass: blurred backdrop + sheen + warm/cool aurora + rim + deep shadow. */
 .glass {
@@ -191,12 +194,18 @@ p { text-wrap: pretty; }
   font-size: 0.95rem;
   white-space: nowrap;
   color: var(--color-ink);
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s var(--ease-out-expo);
+  transition: background-color 0.2s ease, box-shadow 0.25s ease, color 0.2s ease, transform 160ms var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
 }
-.btn:hover { transform: translateY(-1px); }
 .btn:focus-visible { outline: 2px solid var(--color-cream); outline-offset: 3px; }
-.btn svg { transition: transform 0.4s var(--ease-out-expo); }
-.btn:hover svg { transform: translateX(2px); }
+.btn svg { transition: transform 0.25s var(--ease-out); }
+/* Press feedback everywhere; lift + arrow nudge only where hover is real (no sticky taps). */
+.btn:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-1px); }
+  .btn:hover:active { transform: translateY(-1px) scale(0.97); }
+  .btn:hover svg { transform: translateX(2px); }
+}
 
 /* Primary: translucent pill, peach glow welling from below, cool glow from the left,
    1px gradient hairline (mask xor), and a cursor-tracked peach edge light. */
@@ -250,9 +259,11 @@ p { text-wrap: pretty; }
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 }
-.glow-edge:hover::after { opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .glow-edge:hover::after { opacity: 1; }
+}
 .glow-edge--warm::after {
   background: radial-gradient(120px circle at var(--gx, 50%) var(--gy, 50%),
     #ffa582 0%, #ffa582b3 16%, #ffa58238 34%, transparent 58%);
@@ -281,6 +292,38 @@ p { text-wrap: pretty; }
     radial-gradient(62% 72% at 24% 52%, #060606d9 0%, #06060673 48%, #06060600 80%),
     linear-gradient(to top, #060606b3 0%, transparent 35%);
 }
+
+/* "AI-native" mark: fills the space "Fourati" leaves under "Haytham".
+   Sized in em off the headline so it scales with it; right edge meets "Haytham",
+   bottom sits on the baseline. From 1100px — narrower, the gap is smaller than the pill. */
+.hero-mark {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 34%; /* of the line box (= 1em of the headline), lands the pill on the baseline */
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.5em 0.95em;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: #ffffff08;
+  box-shadow: var(--rim);
+  font-family: var(--font-mono);
+  font-size: max(11px, 0.095em);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--color-cream);
+  -webkit-text-fill-color: var(--color-cream);
+}
+.hero-mark-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 999px;
+  background: var(--premium);
+  box-shadow: 0 0 10px #feeae180;
+}
+@media (min-width: 1100px) { .hero-mark { display: inline-flex; } }
 
 /* Status pip */
 .pip {
@@ -321,16 +364,21 @@ p { text-wrap: pretty; }
 
 /* ===== WORK ===== */
 .work-row {
-  transition: background-color 0.4s ease;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.work-row:hover, .work-row:focus-visible { background-color: #ffffff06; }
+.work-row:focus-visible { background-color: #ffffff06; outline: 2px solid var(--color-cream); outline-offset: -2px; }
+.work-row:active { background-color: #ffffff0a; }
 .work-row .work-arrow {
-  transition: transform 0.5s var(--ease-out-expo), color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s var(--ease-out), color 0.2s ease, border-color 0.2s ease;
 }
-.work-row:hover .work-arrow {
-  transform: rotate(-45deg);
-  color: var(--color-ink);
-  border-color: var(--color-line-hover);
+@media (hover: hover) and (pointer: fine) {
+  .work-row:hover { background-color: #ffffff06; }
+  .work-row:hover .work-arrow {
+    transform: rotate(-45deg);
+    color: var(--color-ink);
+    border-color: var(--color-line-hover);
+  }
 }
 
 /* Image reveal (GSAP) */

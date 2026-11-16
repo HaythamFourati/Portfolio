@@ -12,7 +12,7 @@
     <div id="smooth-content">
 
         <header id="site-header" class="sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-[var(--gutter)]">
+            <div class="max-w-7xl mx-auto box-content px-[var(--gutter)]">
                 <div class="flex justify-between items-center h-16">
                     <a href="<?php echo get_home_url(); ?>" class="group inline-flex items-center gap-2.5 font-display text-[1.05rem] font-medium tracking-[-0.02em] text-ink">
                         <span class="relative grid place-items-center w-7 h-7 rounded-lg border border-line bg-surface-2 shadow-[inset_0_1px_0_0_#ffffff14]" aria-hidden="true">

@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer class="relative mt-[var(--section-gap)] border-t border-line overflow-hidden">
-  <div class="max-w-7xl mx-auto px-[var(--gutter)] pt-10 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+  <div class="max-w-7xl mx-auto box-content px-[var(--gutter)] pt-10 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
     <p class="text-faint">
       <span class="text-muted">haytham@dev</span>:~$
       <span class="text-muted">echo "&copy; <?php echo date('Y'); ?> Haytham Fourati"</span>

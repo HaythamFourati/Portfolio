@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('glow-edge group panel overflow-hidden flex flex-col'); ?>>
     <?php if (has_post_thumbnail()) : ?>
         <a href="<?php the_permalink(); ?>" class="block aspect-[16/10] overflow-hidden border-b border-line">
-            <?php the_post_thumbnail('post-thumbnail', ['class' => 'w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-[1.2s] ease-[var(--ease-out-expo)]']); ?>
+            <?php the_post_thumbnail('post-thumbnail', ['class' => 'w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.04] transition-[opacity,transform] duration-700 ease-[var(--ease-out)]']); ?>
         </a>
     <?php else : ?>
         <a href="<?php the_permalink(); ?>" class="stage !rounded-none !border-0 border-b border-line block aspect-[16/10] grid place-items-center" aria-hidden="true" tabindex="-1">

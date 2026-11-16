@@ -14,12 +14,12 @@ get_header(); ?>
 
   <!-- ============== HERO ============== -->
   <section id="hero" class="relative px-[var(--gutter)] pt-2">
-    <div class="stage min-h-[calc(100svh-5rem)] flex items-center">
+    <div class="stage max-w-7xl mx-auto min-h-[calc(100svh-5rem)] flex items-center">
       <!-- Liquid-glass WebGL field (src/scripts/heroShader.js) + readability scrim -->
       <canvas class="hero-shader" aria-hidden="true"></canvas>
       <div class="hero-scrim" aria-hidden="true"></div>
 
-      <div class="relative w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-10 items-center px-5 sm:px-10 lg:px-14 py-14 lg:py-20">
+      <div class="relative w-full grid lg:grid-cols-12 gap-12 lg:gap-10 items-center px-5 sm:px-10 lg:px-14 py-14 lg:py-20">
 
         <!-- Copy -->
         <div class="lg:col-span-7 order-2 lg:order-1">
@@ -32,14 +32,14 @@ get_header(); ?>
             </span>
           </p>
 
-          <h1 class="mt-8 font-display font-light text-[clamp(3.5rem,9.5vw,8.25rem)] leading-[0.88] tracking-[-0.05em]">
-            <span data-hero-line class="title-sheen block w-fit whitespace-nowrap">Haytham</span>
-            <span data-hero-line class="title-sheen block w-fit whitespace-nowrap">Fourati</span>
+          <h1 class="mt-8 w-fit flex flex-col font-display font-light text-[clamp(3.5rem,9.5vw,8.25rem)] leading-[0.88] tracking-[-0.05em]">
+            <span data-hero-line class="title-sheen whitespace-nowrap">Haytham</span>
+            <span data-hero-line class="title-sheen relative whitespace-nowrap">Fourati<span class="hero-mark" aria-hidden="true"><span class="hero-mark-dot"></span>AI-native</span></span>
           </h1>
 
           <p data-hero class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-xl sm:text-2xl font-normal tracking-[-0.015em] text-ink">
             Front-End &amp; WordPress engineer.
-            <span class="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-xs text-cream">
+            <span class="min-[1100px]:sr-only inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-xs text-cream">
               <span class="w-1.5 h-1.5 rounded-full bg-[image:var(--premium)]"></span>AI-native
             </span>
           </p>
@@ -63,7 +63,7 @@ get_header(); ?>
         <!-- Portrait -->
         <div data-hero class="lg:col-span-5 order-1 lg:order-2 w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none lg:pl-6">
           <figure class="relative">
-            <div class="glow-edge rounded-[var(--radius-stage)] border border-line bg-surface overflow-hidden shadow-[var(--rim),0_40px_100px_-40px_#000]">
+            <div class="glow-edge relative rounded-[var(--radius-stage)] border border-line bg-surface overflow-hidden shadow-[var(--rim),0_40px_100px_-40px_#000]">
               <!-- Window bar -->
               <div class="flex items-center gap-3 px-4 py-3 border-b border-line bg-[image:var(--sheen)]">
                 <span class="flex gap-1.5" aria-hidden="true">
@@ -73,9 +73,12 @@ get_header(); ?>
                 </span>
                 <span class="font-mono text-[11px] text-faint truncate">~/portfolio/haytham.webp</span>
               </div>
-              <img src="<?php echo esc_url(get_theme_file_uri('/images/Warm Professional Office Headshot.webp')); ?>"
+              <img src="<?php echo esc_url(get_theme_file_uri('/images/headshot-studio.webp')); ?>"
                    alt="Haytham Fourati, front-end developer" width="1122" height="1402"
                    class="block w-full aspect-[4/5] object-cover object-top" fetchpriority="high">
+              <!-- Blend the light studio backdrop into the dark frame -->
+              <div class="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-canvas/80 via-canvas/25 to-transparent" aria-hidden="true"></div>
+              <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_#06060666]" aria-hidden="true"></div>
             </div>
 
             <!-- Floating status chip -->
@@ -94,7 +97,7 @@ get_header(); ?>
     </div>
 
     <!-- Stats strip -->
-    <dl data-hero class="max-w-7xl mx-auto mt-6 grid grid-cols-3 hairline-grid">
+    <dl data-hero class="max-w-7xl mx-auto mt-4 grid grid-cols-3 hairline-grid">
       <div class="px-4 sm:px-8 py-5">
         <dt class="font-mono text-[11px] text-faint">experience</dt>
         <dd class="mt-1.5 font-display text-base sm:text-2xl font-normal tracking-[-0.02em] text-ink">5+ yrs</dd>
@@ -141,7 +144,7 @@ get_header(); ?>
         foreach ($stages as $i => $s) :
           $mine = $i === 0 || $i === 3;
         ?>
-          <li class="group relative p-6 lg:p-7 lg:min-h-[13rem] flex flex-col transition-colors duration-500 hover:!bg-surface-2 <?php echo $mine ? '!bg-[image:var(--aurora),linear-gradient(var(--color-surface),var(--color-surface))]' : ''; ?>">
+          <li class="group relative p-6 lg:p-7 lg:min-h-[13rem] flex flex-col transition-colors duration-200 hover:!bg-surface-2 <?php echo $mine ? '!bg-[image:var(--aurora),linear-gradient(var(--color-surface),var(--color-surface))]' : ''; ?>">
             <div class="flex items-center justify-between mb-6 lg:mb-10">
               <span class="font-mono text-xs <?php echo $mine ? 'text-premium' : 'text-faint'; ?>"><?php echo $s['n']; ?></span>
               <span class="font-mono text-[11px] text-faint group-hover:text-muted transition-colors"><?php echo $s['k']; ?>()</span>
@@ -173,26 +176,39 @@ get_header(); ?>
       </div>
 
       <!-- Featured project -->
-      <a href="https://successcircles.com" target="_blank" rel="noopener"
-         class="glow-edge group block relative rounded-[var(--radius-stage)] overflow-hidden border border-line">
-        <div class="image-reveal-box w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9]">
-          <img src="<?php echo esc_url(get_theme_file_uri('/images/Success-Circles.webp')); ?>"
-               alt="Success Circles — homepage of an advisory community for established entrepreneurs, dark editorial layout" class="reveal-img object-top" loading="lazy">
+      <a href="https://localvocalmarketing.com/" target="_blank" rel="noopener"
+         class="glow-edge group block relative rounded-[var(--radius-stage)] overflow-hidden border border-line bg-surface">
+        <div class="image-reveal-box w-full aspect-[1920/846] border-b border-line">
+          <img src="<?php echo esc_url(get_theme_file_uri('/images/Local-Vocal-Marketing.webp')); ?>"
+               alt="Local Vocal Marketing homepage — Maryland web design and local SEO agency, with a Google search and map-pack mockup"
+               width="1920" height="846" class="reveal-img object-top" loading="lazy">
           <div class="uncover"><div class="uncover_slice"></div><div class="uncover_slice"></div><div class="uncover_slice"></div></div>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-canvas from-15% via-canvas/85 via-50% to-canvas/25 transition-opacity duration-700 group-hover:opacity-80"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <div class="flex items-center gap-3 font-mono text-[11px] text-faint mb-4">
+        <div class="grid lg:grid-cols-12 gap-x-10 gap-y-6 p-6 sm:p-10 items-end">
+          <div class="lg:col-span-8">
+            <div class="flex flex-wrap items-center gap-3 font-mono text-[11px] text-faint mb-4">
               <span class="glass rounded-full px-3 py-1 text-cream">[ featured ]</span>
-              <span>coaching / community</span>
+              <span>agency / web design &amp; local SEO</span>
             </div>
-            <h3 class="font-display text-3xl sm:text-5xl font-light tracking-[-0.035em] text-ink mb-2">Success Circles</h3>
-            <p class="text-muted max-w-xl">An advisory community for established entrepreneurs — editorial design built to turn visitors into members.</p>
+            <h3 class="font-display text-3xl sm:text-5xl font-light tracking-[-0.035em] text-ink mb-3">Local Vocal Marketing</h3>
+            <p class="text-muted max-w-2xl">
+              The flagship site for the Maryland agency I develop for, built as a custom WordPress theme —
+              a live Google-search hero, a guided free-review intake flow, and local-SEO
+              structured data — so the agency's own site sells what it does.
+            </p>
+            <ul class="mt-6 flex flex-wrap gap-2 font-mono text-[11px]">
+              <li class="rounded-full border border-line px-3 py-1 text-muted">role: WordPress developer</li>
+              <li class="rounded-full border border-line px-3 py-1 text-muted">custom WP theme</li>
+              <li class="rounded-full border border-line px-3 py-1 text-muted">WebGL shader</li>
+              <li class="rounded-full border border-line px-3 py-1 text-muted">intake flow</li>
+              <li class="rounded-full border border-line px-3 py-1 text-muted">schema / local SEO</li>
+            </ul>
           </div>
-          <span class="btn btn-primary">
-            successcircles.com <?php echo $arrow_out; ?>
-          </span>
+          <div class="lg:col-span-4 lg:justify-self-end">
+            <span class="btn btn-primary">
+              localvocalmarketing.com <?php echo $arrow_out; ?>
+            </span>
+          </div>
         </div>
       </a>
 
@@ -200,9 +216,9 @@ get_header(); ?>
       <ul class="glow-edge mt-4 panel overflow-hidden divide-y divide-line">
         <?php
         $projects = [
-          ['n' => '02', 'name' => 'Precision Aesthetics MD', 'tag' => 'aesthetics',    'url' => 'https://precisionaestheticsmd.com', 'host' => 'precisionaestheticsmd.com', 'desc' => 'A sleek, conversion-focused site for a medical spa with a fast, trustworthy booking experience.'],
-          ['n' => '03', 'name' => 'Kidzz Kreations',        'tag' => 'entertainment', 'url' => 'https://kidzzkreations.com/',        'host' => 'kidzzkreations.com',     'desc' => "Turning kids' party dreams into reality with playful, memorable entertainment."],
-          ['n' => '04', 'name' => 'Local Vocal Marketing',  'tag' => 'marketing',     'url' => 'https://localvocalmarketing.com',   'host' => 'localvocalmarketing.com', 'desc' => 'A corporate site for a marketing agency showcasing services and portfolio.'],
+          ['n' => '02', 'name' => 'Success Circles',         'tag' => 'coaching',      'url' => 'https://successcircles.com',        'host' => 'successcircles.com',       'desc' => 'An advisory community for established entrepreneurs — editorial design built to turn visitors into members.'],
+          ['n' => '03', 'name' => 'Precision Aesthetics MD', 'tag' => 'aesthetics',    'url' => 'https://precisionaestheticsmd.com', 'host' => 'precisionaestheticsmd.com', 'desc' => 'A sleek, conversion-focused site for a medical spa with a fast, trustworthy booking experience.'],
+          ['n' => '04', 'name' => 'Kidzz Kreations',        'tag' => 'entertainment', 'url' => 'https://kidzzkreations.com/',        'host' => 'kidzzkreations.com',     'desc' => "Turning kids' party dreams into reality with playful, memorable entertainment."],
           ['n' => '05', 'name' => 'Care Giving Angels of MD','tag' => 'healthcare',    'url' => 'https://caregivingangelsofmd.com/', 'host' => 'caregivingangelsofmd.com','desc' => 'A compassionate, trust-first website for a home care agency.'],
           ['n' => '06', 'name' => 'ADHD Telehealth Testing', 'tag' => 'telehealth',    'url' => 'https://adhdtestcalifornia.com/',   'host' => 'adhdtestcalifornia.com',  'desc' => 'A friendly, accessible platform for ADHD testing across California.'],
           ['n' => '07', 'name' => 'Cullen Burke',            'tag' => 'legal',         'url' => 'https://www.cullenburke.com/',      'host' => 'cullenburke.com',        'desc' => 'A strong, authoritative presence for a criminal defense lawyer.'],

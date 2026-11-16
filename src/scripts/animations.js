@@ -94,7 +94,7 @@ function initHero(smoother) {
 
   // Whole lines (not chars): each line carries its own background-clip sheen,
   // which splitting into transformed chars would break.
-  gsap.set(lines, { opacity: 0, yPercent: 35, filter: 'blur(14px)' });
+  gsap.set(lines, { opacity: 0, yPercent: 35, filter: 'blur(10px)' });
   if (meterFill) gsap.set(meterFill, { width: '0%' });
 
   const revealIdentity = () => {
@@ -102,23 +102,21 @@ function initHero(smoother) {
 
     tl.to(lines, {
       opacity: 1, yPercent: 0, filter: 'blur(0px)',
-      duration: 1.4, stagger: 0.12,
+      duration: 1.1, stagger: 0.08,
     }, 0);
     tl.to(revealEls, {
-      opacity: 1, y: 0, duration: 1.1, stagger: 0.08,
-    }, 0.25);
+      opacity: 1, y: 0, duration: 0.9, stagger: 0.06,
+    }, 0.15);
 
     if (meterFill) {
       tl.to(meterFill, { width: '100%', duration: 1.1, ease: 'power2.inOut' }, 0.5);
     }
   };
 
-  // Type the prompt, then reveal. Fallback: if no typed element, reveal now.
-  if (typedEl) {
-    typeText(typedEl, revealIdentity);
-  } else {
-    revealIdentity();
-  }
+  // Reveal the name while the prompt types — waiting ~1.7s for the typing to finish
+  // made the most important content feel slow to load.
+  if (typedEl) typeText(typedEl);
+  gsap.delayedCall(0.3, revealIdentity);
 }
 
 function typeText(el, onComplete) {
