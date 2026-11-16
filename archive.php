@@ -1,44 +1,27 @@
 <?php get_header(); ?>
 
-<div class="bg-gradient-to-br from-[#0A192F] to-[#112240] text-gray-300 py-12">
-    <div class="container max-w-7xl mx-auto px-4">
-        <header class="mb-12 text-center">
-            <?php
-            the_archive_title('<h1 class="text-4xl font-bold text-white font-poppins">', '</h1>');
-            the_archive_description('<div class="text-gray-400 mt-2 max-w-2xl mx-auto">', '</div>');
-            ?>
-        </header>
+<main class="px-[var(--gutter)]">
+    <header class="stage max-w-7xl mx-auto mt-2 px-6 py-[clamp(4rem,9vw,7rem)] text-center">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_62%_at_50%_50%,#060606b3_0%,#06060640_50%,transparent_80%)]" aria-hidden="true"></div>
+        <?php
+        the_archive_title('<h1 class="block"><span class="title-sheen font-display font-light text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.92] tracking-[-0.05em]">', '</span></h1>');
+        the_archive_description('<div class="text-muted mt-5 max-w-2xl mx-auto">', '</div>');
+        ?>
+    </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section class="max-w-7xl mx-auto pt-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
-                                        <?php get_template_part('template-parts/post-card'); ?>
+                    <?php get_template_part('template-parts/post-card'); ?>
                 <?php endwhile; ?>
             <?php else : ?>
-                <p class="text-gray-400 col-span-full text-center">No posts found.</p>
+                <p class="text-muted col-span-full text-center">No posts found.</p>
             <?php endif; ?>
         </div>
 
-        <div class="mt-12 text-white">
-            <?php 
-            $pagination_links = paginate_links(array(
-                'type' => 'array',
-                'prev_text' => __('&laquo; Previous'),
-                'next_text' => __('Next &raquo;'),
-            ));
-
-            if ($pagination_links) {
-                echo '<nav class="flex justify-center">';
-                echo '<ul class="flex space-x-2">';
-                foreach ($pagination_links as $link) {
-                    echo '<li>' . str_replace('page-numbers', 'page-numbers bg-gray-800/50 border border-gray-700 px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300', $link) . '</li>';
-                }
-                echo '</ul>';
-                echo '</nav>';
-            }
-            ?>
-        </div>
-    </div>
-</div>
+        <?php portfolio_pagination(__('&laquo; Previous'), __('Next &raquo;')); ?>
+    </section>
+</main>
 
 <?php get_footer(); ?>

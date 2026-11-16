@@ -1,9 +1,9 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { SplitText } from 'gsap/SplitText';
+import { initHeroShader } from './heroShader';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.config({ force3D: true });
 
   // Note: sticky header + mobile-menu toggle are owned by src/index.js (loaded site-wide).
+
+  // Runs before the reduced-motion exit: those users get one still frame instead.
+  const heroCanvas = document.querySelector('.hero-shader');
+  if (heroCanvas) initHeroShader(heroCanvas, { still: prefersReducedMotion });
+  initBorderGlow();
 
   // --- REDUCED MOTION: show everything as-is, no entrance motion ---
   if (prefersReducedMotion) {
@@ -81,30 +86,26 @@ function initHero(smoother) {
 
   const typedEl = hero.querySelector('[data-typed]');
   const revealEls = gsap.utils.toArray('#hero [data-hero]');
-  const title = hero.querySelector('h1');
+  const lines = gsap.utils.toArray('#hero [data-hero-line]');
   const meterFill = hero.querySelector('.ship-meter > span');
 
   // Initial hidden states (JS-only, so no-JS keeps everything visible)
   gsap.set(revealEls, { opacity: 0, y: 14 });
 
-  let splitTitle = null;
-  if (title) {
-    splitTitle = new SplitText(title, { type: 'chars' });
-    gsap.set(splitTitle.chars, { opacity: 0, yPercent: 60, rotateX: -55 });
-  }
+  // Whole lines (not chars): each line carries its own background-clip sheen,
+  // which splitting into transformed chars would break.
+  gsap.set(lines, { opacity: 0, yPercent: 35, filter: 'blur(10px)' });
   if (meterFill) gsap.set(meterFill, { width: '0%' });
 
   const revealIdentity = () => {
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
-    if (splitTitle) {
-      tl.to(splitTitle.chars, {
-        opacity: 1, yPercent: 0, rotateX: 0,
-        duration: 0.6, stagger: 0.025,
-      }, 0);
-    }
+    tl.to(lines, {
+      opacity: 1, yPercent: 0, filter: 'blur(0px)',
+      duration: 1.1, stagger: 0.08,
+    }, 0);
     tl.to(revealEls, {
-      opacity: 1, y: 0, duration: 0.7, stagger: 0.09,
+      opacity: 1, y: 0, duration: 0.9, stagger: 0.06,
     }, 0.15);
 
     if (meterFill) {
@@ -112,12 +113,10 @@ function initHero(smoother) {
     }
   };
 
-  // Type the prompt, then reveal. Fallback: if no typed element, reveal now.
-  if (typedEl) {
-    typeText(typedEl, revealIdentity);
-  } else {
-    revealIdentity();
-  }
+  // Reveal the name while the prompt types — waiting ~1.7s for the typing to finish
+  // made the most important content feel slow to load.
+  if (typedEl) typeText(typedEl);
+  gsap.delayedCall(0.3, revealIdentity);
 }
 
 function typeText(el, onComplete) {
@@ -169,18 +168,18 @@ function initTimeline() {
       ScrollTrigger.create({
         trigger: item, start: 'top 62%',
         onEnter: () => {
-          gsap.to(node, { backgroundColor: '#b6f23d', scale: 1.25, duration: 0.3, ease: 'back.out(2)' });
+          gsap.to(node, { backgroundColor: '#feeae1', boxShadow: '0 0 16px #feeae1aa', scale: 1.3, duration: 0.4, ease: 'expo.out' });
           gsap.to(node, { scale: 1, duration: 0.2, delay: 0.3 });
         },
-        onLeaveBack: () => gsap.to(node, { backgroundColor: '#2a2a36', duration: 0.3 }),
+        onLeaveBack: () => gsap.to(node, { backgroundColor: '#2a2a2a', boxShadow: '0 0 0px #feeae100', duration: 0.3 }),
       });
     }
 
     if (year && index > 0) {
       ScrollTrigger.create({
         trigger: item, start: 'top 62%',
-        onEnter: () => gsap.to(year, { backgroundColor: '#b6f23d', color: '#16210a', duration: 0.3 }),
-        onLeaveBack: () => gsap.to(year, { backgroundColor: '#1c1c26', color: '#a7a7b4', duration: 0.3 }),
+        onEnter: () => gsap.to(year, { backgroundColor: '#feeae1', color: '#060606', borderColor: '#feeae1', duration: 0.4 }),
+        onLeaveBack: () => gsap.to(year, { backgroundColor: '#141414', color: '#a6a6a6', borderColor: '#ffffff14', duration: 0.3 }),
       });
     }
   });
@@ -198,10 +197,24 @@ function initSectionReveals() {
     gsap.timeline({
       scrollTrigger: { trigger: section, start: 'top 82%', toggleActions: 'play none none none' },
     }).fromTo(blocks,
-      { opacity: 0, y: 28 },
-      { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out' }
+      { opacity: 0, y: 32, filter: 'blur(6px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, stagger: 0.1, ease: 'expo.out' }
     );
   });
+}
+
+// ===== CURSOR BORDER GLOW =====
+// A radial blob tracks the pointer inside a 1px masked ring (see .glow-edge in CSS).
+// One delegated listener; position is element-local so it works under ScrollSmoother.
+function initBorderGlow() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  document.addEventListener('pointermove', (e) => {
+    const el = e.target.closest('.glow-edge');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--gx', `${e.clientX - r.left}px`);
+    el.style.setProperty('--gy', `${e.clientY - r.top}px`);
+  }, { passive: true });
 }
 
 // ===== SHARED =====
